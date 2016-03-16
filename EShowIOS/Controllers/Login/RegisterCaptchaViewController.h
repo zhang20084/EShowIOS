@@ -10,4 +10,6 @@
 
 @interface RegisterCaptchaViewController : UIViewController
 
+@property (nonatomic, strong) NSMutableArray *usernameArray;
+
 @end

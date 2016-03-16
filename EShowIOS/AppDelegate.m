@@ -38,8 +38,16 @@
     //设置导航条样式
     [self customizeInterface];
     
-    [self setupIntroductionViewController];
-//    [self setupTabViewController];
+    //判断是否登录
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *isLogin = [userDefault objectForKey:@"user.username"];
+    
+    if (isLogin == nil) {
+        NSLog(@"%@",isLogin);
+        [self setupIntroductionViewController];
+    }else{
+        [self setupTabViewController];
+    }
     
     [self.window makeKeyAndVisible];
     

@@ -7,7 +7,9 @@
 //
 
 #import "RegisterCaptchaViewController.h"
+#import "AppDelegate.h"
 #import "TPKeyboardAVoidingTableView.h"
+#import "AFNetworking.h"
 
 @interface RegisterCaptchaViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -138,21 +140,34 @@
     
     _footerBtn = [UIButton buttonWithStyle:StrapSuccessStyle andTitle:@"提交" andFrame:CGRectMake(kLoginPaddingLeftWidth, 20, ScreenWidth-kLoginPaddingLeftWidth*2, 45) target:self action:@selector(sendRegister)];
     [footerV addSubview:_footerBtn];
-
-//    RAC(self, footerBtn.enabled) = [RACSignal combineLatest:@[RACObserve(self, username_textField.text)] reduce:^id(NSNumber *username){
-//        if ((username && username.boolValue) <= 0 ) {
-//            return @(NO);
-//        }else{
-//            return @(YES);
-//        }
-//    }];
     
     return footerV;
 }
 
 - (void)sendRegister
 {
-
+    [self.captcha_textField resignFirstResponder];
+    [self.paaaword_textField resignFirstResponder];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/plain"];
+    
+    [manager POST:[NSString stringWithFormat:@"http://api.eshow.org.cn/user/signup.json?"]
+      parameters:@{
+                   @"user.password" : self.paaaword_textField.text,
+                   @"code": self.captcha_textField.text,
+                   @"user.username": @"13771234900",
+                   }
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             
+             [((AppDelegate *)[UIApplication sharedApplication].delegate) setupTabViewController];
+             
+         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             
+             NSLog(@"error: %@", error);
+             
+         }];
 }
 
 - (void)voicePrompt

@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AFNetworking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>AFOnoResponseSerializer.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>CTAssetsPickerController-CTAssetsPickerController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -132,17 +142,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>00E95B255FA899CDA8C5BC5F9E4F5D35</key>
+		<key>06D1E331F819F0A76EC732F42EA982C4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>06A94172E32D3E0B14741D825F9DF710</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>097140E2092D84B0FEF20C7DFF2B5826</key>
+		<key>071BDA776A9B305D01676079DBD48271</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -152,12 +157,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1996B9CB32E0AFA5C7C9034BE2C4F111</key>
+		<key>1E20A9638E1D636347CE3D9F4D2E2521</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1F0D2BAA9DB3F1220E3FA3F545C239C8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1FE880510D600138F54D126B01663345</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>207FCA348A5C0F480C85BDC512E0E110</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>410B25DF16EA5C5B3E2698F74F9625FB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>473C5C852AC72804D22E83621607C203</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -187,12 +212,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6B153E5783F3EEF50E903ECA31AA6B5C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6C78197859220D7CC49C9DCE32BFB856</key>
+		<key>6CCD566A6937433138BDEEF06132BCD1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -202,7 +222,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8620FB8ADA00A7D3C2B3F1B0B566AA12</key>
+		<key>8294C51A21759337D00E25924AB12500</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>836AE7B948ACF33D47D8F194AC5F7ACC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8E5066E995B97B9436BB0B449145C475</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8EC08F31CFC2C1C52A56331C19F2425E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -222,22 +257,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>99CF384504980C1D1C8760E3711B3884</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>A9DD0511E7BEB30672D6697BC3398ABB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>CB54E8FC8C9BC5A7ADB2580A457625E7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DDF6E3700E59DC6BF7E336C0EAF2E268</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -247,7 +267,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EB64922B8DA93A5FBC3F62F2A1D8B14D</key>
+		<key>F4BD1E2C1D8852C5EA4477910C2CC6BB</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -111,7 +111,14 @@
         }
             
         default:
+        {
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            [userDefaults removeObjectForKey:@"user.username"];
+            [userDefaults removeObjectForKey:@"user.password"];
+            [userDefaults synchronize];
+            
             break;
+        }
     }
 }
 

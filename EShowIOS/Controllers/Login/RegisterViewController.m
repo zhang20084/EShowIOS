@@ -12,8 +12,8 @@
 #import "Input_OnlyText_Cell.h"//文本
 #import "UITTTAttributedLabel.h"
 #import "AppDelegate.h"
-#import "Login.h"
-#import "EShow_NetAPIManager.h"
+#import <MBProgressHUD.h>
+#import "AFNetworking.h"
 
 @interface RegisterViewController ()<UITableViewDataSource,UITableViewDelegate,TTTAttributedLabelDelegate>
 
@@ -21,6 +21,7 @@
 @property (strong, nonatomic) TPKeyboardAvoidingTableView *myTableView;
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) UITextField *username_textField;
+@property (nonatomic, strong) MBProgressHUD *hud;
 
 @end
 
@@ -29,9 +30,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"注册";
-    // Do any additional setup after loading the view.
     
-    //    添加myTableView
+//添加myTableView
     _myTableView = ({
         TPKeyboardAvoidingTableView *tableView = [[TPKeyboardAvoidingTableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
         [tableView registerNib:[UINib nibWithNibName:kCellIdentifier_Input_OnlyText_Cell bundle:[NSBundle mainBundle]] forCellReuseIdentifier:kCellIdentifier_Input_OnlyText_Cell];
@@ -140,30 +140,27 @@
 - (void)sendRegister
 {
     [self.username_textField resignFirstResponder];
-    
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    NSString *str = [NSString stringWithFormat:@"http://api.eshow.org.cn/user/check.json?type=register&user.username=%@",self.username_textField.text];
+
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
-    [manager GET:str parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        // 隐藏系统风火轮
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        
-        //json解析
-        NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
-        
-        NSLog(@"---获取到的json格式的字典--%@",resultDic);
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-        // 解析失败隐藏系统风火轮(可以打印error.userInfo查看错误信息)
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        
-    }];
+    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/plain"];
     
-    RegisterCaptchaViewController *captchaVC = [[RegisterCaptchaViewController alloc] init];
-    [self.navigationController pushViewController:captchaVC animated:YES];
+    [manager GET:[NSString stringWithFormat:@"http://api.eshow.org.cn/user/check.json?"]
+      parameters:@{
+                   @"user.username":self.username_textField.text,
+                   @"type":@"register"
+                   }
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    
+             RegisterCaptchaViewController *captchaVC = [[RegisterCaptchaViewController alloc] init];
+             captchaVC.usernameArray = [NSMutableArray arrayWithObject:@"user.username"];
+             [self.navigationController pushViewController:captchaVC animated:YES];
+         
+         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         
+             NSLog(@"error: %@", error);
+         
+         }];
 }
 
 #pragma mark TTTAttributedLabelDelegate

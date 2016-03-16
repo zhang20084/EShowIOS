@@ -12,8 +12,9 @@
 #import "UITTTAttributedLabel.h"
 #import "AppDelegate.h"
 #import "UMSocial.h"
+#import "AFNetworking.h"
 
-@interface LoginViewController () <UITableViewDataSource,UITableViewDelegate,TTTAttributedLabelDelegate>
+@interface LoginViewController () <UITableViewDataSource,UITableViewDelegate,TTTAttributedLabelDelegate,UITextFieldDelegate>
 {
     UITextField * username;
     UITextField * password;
@@ -101,8 +102,9 @@
     if (indexPath.row == 0) {
         _telephone_text = [[UITextField alloc] init];
         _telephone_text.frame = CGRectMake(20, 0, ScreenWidth - 20, 55.0);
-        _telephone_text.keyboardType = UIKeyboardTypeNumberPad;
+        _telephone_text.keyboardType = UIKeyboardTypePhonePad;
         _telephone_text.placeholder = @"请输入手机号码";
+        _telephone_text.delegate = self;
         _telephone_text.clearButtonMode = UITextFieldViewModeAlways;
         [cell.contentView addSubview:_telephone_text];
         
@@ -110,8 +112,9 @@
     
         _password_text = [[UITextField alloc] init];
         _password_text.frame = CGRectMake(20, 0, ScreenWidth - 20, 55.0);
-        _password_text.keyboardType = UIKeyboardTypeNumberPad;
+        _password_text.keyboardType = UIKeyboardTypePhonePad;
         _password_text.placeholder = @"请输入密码";
+        _password_text.delegate = self;
         _password_text.clearButtonMode = UITextFieldViewModeAlways;
         [cell.contentView addSubview:_password_text];
         
@@ -266,7 +269,36 @@
 #pragma mark Btn Clicked
 - (void)sendLogin
 {
-    [((AppDelegate *)[UIApplication sharedApplication].delegate) setupTabViewController];
+    [self.telephone_text resignFirstResponder];
+    [self.password_text resignFirstResponder];
+    
+    NSString *userName = self.telephone_text.text;
+    NSString *passwordNum = self.password_text.text;
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/plain"];
+    
+    [manager POST:[NSString stringWithFormat:@"http://api.eshow.org.cn/user/login.json?"]
+             parameters:@{
+                          
+                          @"user.password" : self.password_text.text,
+                          @"user.username" : self.telephone_text.text,
+                          
+                          } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                              
+                              NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                              [userDefaults setObject:userName forKey:@"user.username"];
+                              [userDefaults setObject:passwordNum forKey:@"user.password"];
+                              [userDefaults synchronize];
+                              
+                              [((AppDelegate *)[UIApplication sharedApplication].delegate) setupTabViewController];
+                              
+                          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                              
+                              NSLog(@"error: %@", error);
+                              
+                          }];
 }
 
 - (void)WechatBtnClicked
