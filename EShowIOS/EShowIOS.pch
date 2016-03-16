@@ -1,0 +1,64 @@
+//
+//  EShowIOS.pch
+//  EShowIOS
+//
+//  Created by 金璟 on 16/3/1.
+//  Copyright © 2016年 金璟. All rights reserved.
+//
+
+#ifndef EShowIOS_pch
+#define EShowIOS_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
+
+#import <Masonry/Masonry.h>
+#import "UIView+Frame.h"
+#import "UIColor+expanded.h"
+#import "BaseNavigationController.h"
+#import "UITableView+Common.h"//自定义tableviewcell
+#import "UIButton+Bootstrap.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <ReactiveCocoa/RACEXTScope.h>
+#import "EShow_NetAPIManager.h"
+
+//常用变量
+#define kDevice_Is_iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
+#define kDevice_Is_iPhone6 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) : NO)
+#define kDevice_Is_iPhone6Plus ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) : NO)
+
+#define kTipAlert(_S_, ...)     [[[UIAlertView alloc] initWithTitle:@"提示" message:[NSString stringWithFormat:(_S_), ##__VA_ARGS__] delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil] show]
+
+#define ScreenBounds [UIScreen mainScreen].bounds
+#define ScreenHeight [UIScreen mainScreen].bounds.size.height
+#define ScreenWidth [UIScreen mainScreen].bounds.size.width
+#define kPaddingLeftWidth 15.0
+#define kLoginPaddingLeftWidth 18.0
+#define kMySegmentControl_Height 44.0
+#define kMySegmentControlIcon_Height 70.0
+
+#define kKeyWindow [UIApplication sharedApplication].keyWindow
+
+#define kHigher_iOS_6_1 (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1)
+#define kHigher_iOS_6_1_DIS(_X_) ([[NSNumber numberWithBool:kHigher_iOS_6_1] intValue] * _X_)
+#define kNotHigher_iOS_6_1_DIS(_X_) (-([[NSNumber numberWithBool:kHigher_iOS_6_1] intValue]-1) * _X_)
+
+#define kScaleFrom_iPhone5_Desgin(_X_) (_X_ * (ScreenWidth/320))
+
+#define  kBackButtonFontSize 16
+#define  kNavTitleFontSize 18
+#define  kBadgeTipStr @"badgeTip"
+
+#define OpenDrawer          @"leftdrawer_open"
+#define CloseDrawer         @"leftdrawer_close"
+#define ToggleDrawer        @"leftdrawer_toggle"
+
+//链接颜色
+#define kLinkAttributes     @{(__bridge NSString *)kCTUnderlineStyleAttributeName : [NSNumber numberWithBool:NO],(NSString *)kCTForegroundColorAttributeName : (__bridge id)[UIColor colorWithHexString:@"0xFF7256"].CGColor}
+#define kLinkAttributesActive       @{(NSString *)kCTUnderlineStyleAttributeName : [NSNumber numberWithBool:NO],(NSString *)kCTForegroundColorAttributeName : (__bridge id)[[UIColor colorWithHexString:@"0xFF7256"] CGColor]}
+
+
+#endif /* EShowIOS_pch */

@@ -1,0 +1,91 @@
+PODS:
+  - CTAssetsPickerController (2.9.5)
+  - DTCoreText (1.6.17):
+    - DTFoundation/Core (~> 1.7.5)
+    - DTFoundation/DTAnimatedGIF (~> 1.7.5)
+    - DTFoundation/DTHTMLParser (~> 1.7.5)
+    - DTFoundation/UIKit (~> 1.7.5)
+  - DTFoundation/Core (1.7.9)
+  - DTFoundation/DTAnimatedGIF (1.7.9)
+  - DTFoundation/DTHTMLParser (1.7.9):
+    - DTFoundation/Core
+  - DTFoundation/UIKit (1.7.9):
+    - DTFoundation/Core
+  - GPUImage (0.1.7)
+  - GRMustache (7.3.2):
+    - JRSwizzle (~> 1.0)
+  - JazzHands (2.0.0)
+  - JCSegmentBarController (0.0.7)
+  - JRSwizzle (1.0)
+  - Masonry (0.6.4)
+  - MBProgressHUD (0.9.2)
+  - MJRefresh (3.1.0)
+  - NYXImagesKit (2.3)
+  - Ono (1.2.2)
+  - pop (1.0.9)
+  - PureLayout (3.0.1)
+  - ReactiveCocoa (2.5):
+    - ReactiveCocoa/UI (= 2.5)
+  - ReactiveCocoa/Core (2.5):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.5)
+  - ReactiveCocoa/UI (2.5):
+    - ReactiveCocoa/Core
+  - SDWebImage (3.7.5):
+    - SDWebImage/Core (= 3.7.5)
+  - SDWebImage/Core (3.7.5)
+  - TBXML (1.5)
+  - TOWebViewController (2.2.3):
+    - TOWebViewController/Core (= 2.2.3)
+  - TOWebViewController/Core (2.2.3)
+  - TPKeyboardAvoiding (1.2.11)
+  - TTTAttributedLabel (1.13.4)
+  - UMengSocial (5.0)
+
+DEPENDENCIES:
+  - CTAssetsPickerController
+  - DTCoreText
+  - GPUImage
+  - GRMustache
+  - JazzHands (= 2.0.0)
+  - JCSegmentBarController
+  - Masonry
+  - MBProgressHUD
+  - MJRefresh
+  - NYXImagesKit (= 2.3)
+  - Ono
+  - pop
+  - PureLayout
+  - ReactiveCocoa
+  - SDWebImage
+  - TBXML
+  - TOWebViewController
+  - TPKeyboardAvoiding
+  - TTTAttributedLabel
+  - UMengSocial
+
+SPEC CHECKSUMS:
+  CTAssetsPickerController: b413fece2194ae3dbf22fbc544cf6f2a6d516a4d
+  DTCoreText: 3ea8bba23dd2141ba18adb227a7dd33a822df1c4
+  DTFoundation: 70a0765e3596f82dd421832e95c65e2166eb3102
+  GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
+  GRMustache: ebe6104fd30a6d22c1f36af131e19e2dbf7cd292
+  JazzHands: 00002e9b1284e7fc1ac6555012e81b8942477242
+  JCSegmentBarController: da7988b700877940e09403be905bea87536b8ffe
+  JRSwizzle: dd5ead5d913a0f29e7f558200165849f006bb1e3
+  Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
+  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
+  NYXImagesKit: 8163e3335a40eaa173ca5bbbf81fafb57d3947eb
+  Ono: 80b1c686777d3f6d5d5ce6fcac8a74afef4ca197
+  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
+  PureLayout: f35f5384c9c4e4479df041dbe33ad7577b71ddfb
+  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+  TBXML: 9f9dadb239f2f2af1dadb87fe43a0ce6e479379a
+  TOWebViewController: ca47b9aeefe66acb3353d197dc8270338540b116
+  TPKeyboardAvoiding: e5ce146b313de063957bfa75a13f1e9b0ff18ab7
+  TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f
+  UMengSocial: 48b67179c492a8cf7803fbb0438b8f55432e2fc1
+
+COCOAPODS: 0.39.0
