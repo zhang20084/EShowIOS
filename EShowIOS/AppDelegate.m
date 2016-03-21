@@ -32,8 +32,8 @@
     
     
     //友盟第三方登录
-    [UMSocialQQHandler setQQWithAppId:@"1105243226" appKey:@"4HxQ7MMmThRlaIXu" url:nil];
-    [UMSocialWechatHandler setWXAppId:@"wxe0304d6eff6e6307" appSecret:@"7c769ad88fcd6dd6b4a6f7c2a8f5426e" url:nil];
+    [UMSocialQQHandler setQQWithAppId:@"1105243226" appKey:@"4HxQ7MMmThRlaIXu" url:@"http://www.umeng.com/social"];
+    [UMSocialWechatHandler setWXAppId:@"wxe0304d6eff6e6307" appSecret:@"7c769ad88fcd6dd6b4a6f7c2a8f5426e" url:@"http://www.umeng.com/social"];
     
     //设置导航条样式
     [self customizeInterface];
@@ -109,10 +109,8 @@
 {
     return  [UMSocialSnsService handleOpenURL:url];
 }
-- (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     return  [UMSocialSnsService handleOpenURL:url];
 }

@@ -8,11 +8,14 @@
 
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
+#import "ForgetPasswordViewController.h"
 #import "TPKeyboardAvoidingTableView.h"
 #import "UITTTAttributedLabel.h"
 #import "AppDelegate.h"
-#import "UMSocial.h"
 #import "AFNetworking.h"
+
+#import "UMSocial.h"
+#import "WXApi.h"
 
 @interface LoginViewController () <UITableViewDataSource,UITableViewDelegate,TTTAttributedLabelDelegate,UITextFieldDelegate>
 {
@@ -30,6 +33,7 @@
 @property (strong, nonatomic) UIImageView *rightImage, *leftImage;
 @property (strong, nonatomic) UILabel *otherLoginWay;
 
+@property (strong, nonatomic) NSString *msg, *status;
 @end
 
 @implementation LoginViewController
@@ -264,6 +268,9 @@
 
 - (void)cannotLoginBtnClicked:(id)sender {
 
+    ForgetPasswordViewController *forget_vc = [[ForgetPasswordViewController alloc] init];
+    [self.navigationController pushViewController:forget_vc animated:YES];
+    
 }
 
 #pragma mark Btn Clicked
@@ -271,6 +278,20 @@
 {
     [self.telephone_text resignFirstResponder];
     [self.password_text resignFirstResponder];
+    
+    if ([self.telephone_text.text length] !=11) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请输入正确的手机号码" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        
+        return;
+    }
+    
+    if ([self.password_text.text length] <=0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"密码不能为空" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        
+        return;
+    }
     
     NSString *userName = self.telephone_text.text;
     NSString *passwordNum = self.password_text.text;
@@ -285,21 +306,48 @@
                           @"user.password" : self.password_text.text,
                           @"user.username" : self.telephone_text.text,
                           
-                          } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                          } success:^(AFHTTPRequestOperation *operation,id responseObject) {
                               
-                              NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-                              [userDefaults setObject:userName forKey:@"user.username"];
-                              [userDefaults setObject:passwordNum forKey:@"user.password"];
-                              [userDefaults synchronize];
+                              NSDictionary *dic = responseObject;
                               
-                              [((AppDelegate *)[UIApplication sharedApplication].delegate) setupTabViewController];
+                              NSString *str = [NSString stringWithFormat:@"msg:%@;status:%@",dic[@"msg"],dic[@"status"]];
+                              
+                              NSLog(@"显示数据:%@",str);
+                              
+                              if (dic[@"status"] == nil) {
+                                  return;
+                              }else if ([dic[@"status"] intValue] == 0){
+                                  
+                                  [self.view makeToast:dic[@"msg"] duration:2 position:@"center"];
+                                  return;
+                                  
+                              }else if ([dic[@"status"] intValue] == 1){
+                              
+                                  NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                                  [userDefaults setObject:userName forKey:@"user.username"];
+                                  [userDefaults setObject:passwordNum forKey:@"user.password"];
+                                  [userDefaults synchronize];
+                                  [((AppDelegate *)[UIApplication sharedApplication].delegate) setupTabViewController];
+                                  
+                                  [self.view makeToast:dic[@"msg"] duration:2 position:@"center"];
+                                  
+                              }else if ([dic[@"status"] intValue] == -5){
+                              
+                                  [self.view makeToast:dic[@"msg"] duration:2 position:@"center"];
+                                  return;
+                                  
+                              }
                               
                           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                               
                               NSLog(@"error: %@", error);
                               
                           }];
+    
+
 }
+
+#pragma mark WeiXin
 
 - (void)WechatBtnClicked
 {
@@ -312,11 +360,12 @@
             UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary]valueForKey:UMShareToWechatSession];
             
             NSLog(@"username is %@, uid is %@, token is %@ url is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL);
-            
         }
-        
+
     });
 }
+
+#pragma mark QQ
 
 - (void)QQBtnClicked
 {
@@ -332,4 +381,5 @@
             
         }});
 }
+
 @end

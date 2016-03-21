@@ -13,6 +13,12 @@
 		A302D4771C97AA4700069037 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A302D4761C97AA4700069037 /* AVFoundation.framework */; };
 		A302D47D1C97B5FB00069037 /* QRCScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A302D47C1C97B5FB00069037 /* QRCScannerViewController.m */; };
 		A302D4B41C97E17C00069037 /* QRCScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = A302D4B31C97E17C00069037 /* QRCScanner.m */; };
+		A308D74E1C9BA733009220CA /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A308D74D1C9BA733009220CA /* User.m */; };
+		A308D7511C9BA89F009220CA /* TitleRImageMoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A308D7501C9BA89F009220CA /* TitleRImageMoreCell.m */; };
+		A308D7541C9BA93E009220CA /* UIView+common.m in Sources */ = {isa = PBXBuildFile; fileRef = A308D7531C9BA93E009220CA /* UIView+common.m */; };
+		A308D7581C9BE014009220CA /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = A308D7571C9BE014009220CA /* Toast+UIView.m */; };
+		A308D75B1C9BE976009220CA /* ForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A308D75A1C9BE976009220CA /* ForgetPasswordViewController.m */; };
+		A308D75E1C9BF3F2009220CA /* Login.m in Sources */ = {isa = PBXBuildFile; fileRef = A308D75D1C9BF3F2009220CA /* Login.m */; };
 		A31790B71C8D4705007C6311 /* JDStatusBarNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = A31790B21C8D4705007C6311 /* JDStatusBarNotification.m */; };
 		A31790B81C8D4705007C6311 /* JDStatusBarStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = A31790B41C8D4705007C6311 /* JDStatusBarStyle.m */; };
 		A31790B91C8D4705007C6311 /* JDStatusBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = A31790B61C8D4705007C6311 /* JDStatusBarView.m */; };
@@ -28,6 +34,11 @@
 		A39E53CA1C9654E2004B6C2C /* MenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A39E53C41C9654E2004B6C2C /* MenuButton.m */; };
 		A39E53CB1C9654E2004B6C2C /* MenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A39E53C61C9654E2004B6C2C /* MenuItem.m */; };
 		A39E53CC1C9654E2004B6C2C /* PopMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A39E53C81C9654E2004B6C2C /* PopMenu.m */; };
+		A3D4BADA1C9A7F6F00BE2111 /* ODRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D4BAD91C9A7F6F00BE2111 /* ODRefreshControl.m */; };
+		A3D4BAE61C9ACA6D00BE2111 /* BaseRDVTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D4BAE51C9ACA6D00BE2111 /* BaseRDVTabViewController.m */; };
+		A3D4BAE91C9ACAE700BE2111 /* RDVFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D4BAE81C9ACAE700BE2111 /* RDVFirstViewController.m */; };
+		A3D4BAEC1C9ACAF500BE2111 /* RDVSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D4BAEB1C9ACAF500BE2111 /* RDVSecondViewController.m */; };
+		A3D4BAEF1C9ACB0400BE2111 /* RDVThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D4BAEE1C9ACB0400BE2111 /* RDVThirdViewController.m */; };
 		A3EB18711C966D0B00E8EBB5 /* XHRealTimeBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EB18701C966D0B00E8EBB5 /* XHRealTimeBlur.m */; };
 		A3EC6CBE1C91697200206E5A /* AddressPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EC6CBD1C91697200206E5A /* AddressPickerViewController.m */; };
 		A3EC6CC11C9169F300206E5A /* JJAddressPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EC6CC01C9169F300206E5A /* JJAddressPickerController.m */; };
@@ -120,6 +131,18 @@
 		A302D47C1C97B5FB00069037 /* QRCScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCScannerViewController.m; sourceTree = "<group>"; };
 		A302D4B21C97E17C00069037 /* QRCScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCScanner.h; sourceTree = "<group>"; };
 		A302D4B31C97E17C00069037 /* QRCScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCScanner.m; sourceTree = "<group>"; };
+		A308D74C1C9BA733009220CA /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		A308D74D1C9BA733009220CA /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		A308D74F1C9BA89F009220CA /* TitleRImageMoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleRImageMoreCell.h; sourceTree = "<group>"; };
+		A308D7501C9BA89F009220CA /* TitleRImageMoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleRImageMoreCell.m; sourceTree = "<group>"; };
+		A308D7521C9BA93E009220CA /* UIView+common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+common.h"; sourceTree = "<group>"; };
+		A308D7531C9BA93E009220CA /* UIView+common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+common.m"; sourceTree = "<group>"; };
+		A308D7561C9BE014009220CA /* Toast+UIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Toast+UIView.h"; sourceTree = "<group>"; };
+		A308D7571C9BE014009220CA /* Toast+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Toast+UIView.m"; sourceTree = "<group>"; };
+		A308D7591C9BE976009220CA /* ForgetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordViewController.h; sourceTree = "<group>"; };
+		A308D75A1C9BE976009220CA /* ForgetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordViewController.m; sourceTree = "<group>"; };
+		A308D75C1C9BF3F2009220CA /* Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Login.h; sourceTree = "<group>"; };
+		A308D75D1C9BF3F2009220CA /* Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Login.m; sourceTree = "<group>"; };
 		A31790B11C8D4705007C6311 /* JDStatusBarNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDStatusBarNotification.h; sourceTree = "<group>"; };
 		A31790B21C8D4705007C6311 /* JDStatusBarNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JDStatusBarNotification.m; sourceTree = "<group>"; };
 		A31790B31C8D4705007C6311 /* JDStatusBarStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDStatusBarStyle.h; sourceTree = "<group>"; };
@@ -149,6 +172,16 @@
 		A39E53C61C9654E2004B6C2C /* MenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItem.m; sourceTree = "<group>"; };
 		A39E53C71C9654E2004B6C2C /* PopMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopMenu.h; sourceTree = "<group>"; };
 		A39E53C81C9654E2004B6C2C /* PopMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopMenu.m; sourceTree = "<group>"; };
+		A3D4BAD81C9A7F6F00BE2111 /* ODRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODRefreshControl.h; sourceTree = "<group>"; };
+		A3D4BAD91C9A7F6F00BE2111 /* ODRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ODRefreshControl.m; sourceTree = "<group>"; };
+		A3D4BAE41C9ACA6D00BE2111 /* BaseRDVTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseRDVTabViewController.h; sourceTree = "<group>"; };
+		A3D4BAE51C9ACA6D00BE2111 /* BaseRDVTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseRDVTabViewController.m; sourceTree = "<group>"; };
+		A3D4BAE71C9ACAE700BE2111 /* RDVFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDVFirstViewController.h; sourceTree = "<group>"; };
+		A3D4BAE81C9ACAE700BE2111 /* RDVFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDVFirstViewController.m; sourceTree = "<group>"; };
+		A3D4BAEA1C9ACAF500BE2111 /* RDVSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDVSecondViewController.h; sourceTree = "<group>"; };
+		A3D4BAEB1C9ACAF500BE2111 /* RDVSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDVSecondViewController.m; sourceTree = "<group>"; };
+		A3D4BAED1C9ACB0400BE2111 /* RDVThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDVThirdViewController.h; sourceTree = "<group>"; };
+		A3D4BAEE1C9ACB0400BE2111 /* RDVThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDVThirdViewController.m; sourceTree = "<group>"; };
 		A3EB186F1C966D0B00E8EBB5 /* XHRealTimeBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHRealTimeBlur.h; sourceTree = "<group>"; };
 		A3EB18701C966D0B00E8EBB5 /* XHRealTimeBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHRealTimeBlur.m; sourceTree = "<group>"; };
 		A3EC6CBC1C91697200206E5A /* AddressPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressPickerViewController.h; sourceTree = "<group>"; };
@@ -347,8 +380,25 @@
 			children = (
 				A301936E1C8935EE008A632C /* PersonalInformationViewController.h */,
 				A301936F1C8935EE008A632C /* PersonalInformationViewController.m */,
+				A3D4BAE41C9ACA6D00BE2111 /* BaseRDVTabViewController.h */,
+				A3D4BAE51C9ACA6D00BE2111 /* BaseRDVTabViewController.m */,
+				A3D4BAE71C9ACAE700BE2111 /* RDVFirstViewController.h */,
+				A3D4BAE81C9ACAE700BE2111 /* RDVFirstViewController.m */,
+				A3D4BAEA1C9ACAF500BE2111 /* RDVSecondViewController.h */,
+				A3D4BAEB1C9ACAF500BE2111 /* RDVSecondViewController.m */,
+				A3D4BAED1C9ACB0400BE2111 /* RDVThirdViewController.h */,
+				A3D4BAEE1C9ACB0400BE2111 /* RDVThirdViewController.m */,
 			);
 			path = PersonalInformation;
+			sourceTree = "<group>";
+		};
+		A308D7551C9BE014009220CA /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				A308D7561C9BE014009220CA /* Toast+UIView.h */,
+				A308D7571C9BE014009220CA /* Toast+UIView.m */,
+			);
+			path = Toast;
 			sourceTree = "<group>";
 		};
 		A31790B01C8D4705007C6311 /* JDStatusBarNotification */ = {
@@ -397,6 +447,15 @@
 				A39E53C81C9654E2004B6C2C /* PopMenu.m */,
 			);
 			path = PopMenu;
+			sourceTree = "<group>";
+		};
+		A3D4BAD71C9A7F6F00BE2111 /* ODRefreshControl */ = {
+			isa = PBXGroup;
+			children = (
+				A3D4BAD81C9A7F6F00BE2111 /* ODRefreshControl.h */,
+				A3D4BAD91C9A7F6F00BE2111 /* ODRefreshControl.m */,
+			);
+			path = ODRefreshControl;
 			sourceTree = "<group>";
 		};
 		A3EB186E1C966D0B00E8EBB5 /* XHRealTimeBlur */ = {
@@ -563,6 +622,8 @@
 				A3F2E8181C855F3C0029C63E /* RegisterViewController.m */,
 				A39DB5E71C8EAB5C003EF98A /* RegisterCaptchaViewController.h */,
 				A39DB5E81C8EAB5C003EF98A /* RegisterCaptchaViewController.m */,
+				A308D7591C9BE976009220CA /* ForgetPasswordViewController.h */,
+				A308D75A1C9BE976009220CA /* ForgetPasswordViewController.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -601,6 +662,10 @@
 			children = (
 				A31790EA1C8D71D3007C6311 /* Register.h */,
 				A31790EB1C8D71D3007C6311 /* Register.m */,
+				A308D74C1C9BA733009220CA /* User.h */,
+				A308D74D1C9BA733009220CA /* User.m */,
+				A308D75C1C9BF3F2009220CA /* Login.h */,
+				A308D75D1C9BF3F2009220CA /* Login.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -641,6 +706,8 @@
 				A31871771C86EB8200C3D869 /* UIView+Extension.m */,
 				A39DB5DD1C8E9C38003EF98A /* NSObject+commom.h */,
 				A39DB5DE1C8E9C38003EF98A /* NSObject+commom.m */,
+				A308D7521C9BA93E009220CA /* UIView+common.h */,
+				A308D7531C9BA93E009220CA /* UIView+common.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -648,6 +715,8 @@
 		A3F2E7FB1C8550AD0029C63E /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				A308D7551C9BE014009220CA /* Toast */,
+				A3D4BAD71C9A7F6F00BE2111 /* ODRefreshControl */,
 				A3F2E7FD1C8550AD0029C63E /* RDVTabBarController */,
 				A3F2E8041C8550AD0029C63E /* SMPageControl */,
 				A3F2E83D1C85926A0029C63E /* MMDrawerController */,
@@ -695,6 +764,8 @@
 				A3F2E8211C856C840029C63E /* Input_OnlyText_Cell.h */,
 				A3F2E8221C856C840029C63E /* Input_OnlyText_Cell.m */,
 				A3F2E8231C856C840029C63E /* Input_OnlyText_Cell.xib */,
+				A308D74F1C9BA89F009220CA /* TitleRImageMoreCell.h */,
+				A308D7501C9BA89F009220CA /* TitleRImageMoreCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -992,26 +1063,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3D4BAE91C9ACAE700BE2111 /* RDVFirstViewController.m in Sources */,
 				A3F2E8191C855F3C0029C63E /* RegisterViewController.m in Sources */,
+				A308D75B1C9BE976009220CA /* ForgetPasswordViewController.m in Sources */,
 				A32C85231C96BECE00E1151F /* FRDLivelyButton.m in Sources */,
 				A3F2E8241C856C840029C63E /* Input_OnlyText_Cell.m in Sources */,
 				A3F2E80F1C8550AD0029C63E /* SMPageControl.m in Sources */,
+				A308D7581C9BE014009220CA /* Toast+UIView.m in Sources */,
 				A3F2E8331C8577740029C63E /* UITTTAttributedLabel.m in Sources */,
 				A39DB5DF1C8E9C38003EF98A /* NSObject+commom.m in Sources */,
 				A3F2E8361C8579350029C63E /* UIButton+Bootstrap.m in Sources */,
+				A308D75E1C9BF3F2009220CA /* Login.m in Sources */,
+				A308D74E1C9BA733009220CA /* User.m in Sources */,
 				A3F2E8281C856E700029C63E /* UIView+Frame.m in Sources */,
 				A3F2E8491C85926B0029C63E /* MMDrawerVisualState.m in Sources */,
 				A3F2E8481C85926A0029C63E /* MMDrawerController.m in Sources */,
 				A3EC6CCB1C916C2C00206E5A /* RecentCityCell.m in Sources */,
 				A318716F1C86E03A00C3D869 /* RootTabViewController.m in Sources */,
+				A3D4BAEF1C9ACB0400BE2111 /* RDVThirdViewController.m in Sources */,
 				A3EC6CDA1C916D5900206E5A /* LNLocationGeocoder.m in Sources */,
 				A31871751C86E48200C3D869 /* LeftViewController.m in Sources */,
+				A3D4BAE61C9ACA6D00BE2111 /* BaseRDVTabViewController.m in Sources */,
 				A3EC6CBE1C91697200206E5A /* AddressPickerViewController.m in Sources */,
 				A302D4B41C97E17C00069037 /* QRCScanner.m in Sources */,
 				A3EC6CD11C916CC800206E5A /* ChineseToPinyin.m in Sources */,
 				A39E53C91C9654E2004B6C2C /* GlowImageView.m in Sources */,
+				A308D7511C9BA89F009220CA /* TitleRImageMoreCell.m in Sources */,
 				A3F2E8161C855B370029C63E /* BaseNavigationController.m in Sources */,
 				A3EC6CDB1C916D5900206E5A /* LNLocationManager.m in Sources */,
+				A3D4BADA1C9A7F6F00BE2111 /* ODRefreshControl.m in Sources */,
 				A3EB18711C966D0B00E8EBB5 /* XHRealTimeBlur.m in Sources */,
 				A39E53CC1C9654E2004B6C2C /* PopMenu.m in Sources */,
 				A31790B81C8D4705007C6311 /* JDStatusBarStyle.m in Sources */,
@@ -1023,6 +1103,7 @@
 				A3F2E84A1C85926B0029C63E /* UIViewController+MMDrawerController.m in Sources */,
 				A3EC6CE01C9187D400206E5A /* ShareViewController.m in Sources */,
 				A3F2E80D1C8550AD0029C63E /* RDVTabBarController.m in Sources */,
+				A308D7541C9BA93E009220CA /* UIView+common.m in Sources */,
 				A3F2E80E1C8550AD0029C63E /* RDVTabBarItem.m in Sources */,
 				A3F2E7BC1C8545350029C63E /* AppDelegate.m in Sources */,
 				A3F2E81C1C85694D0029C63E /* UITableView+Common.m in Sources */,
@@ -1038,6 +1119,7 @@
 				A3EC6CCA1C916C2C00206E5A /* HotCityCell.m in Sources */,
 				A30193CD1C896CFA008A632C /* CenterTableViewController.m in Sources */,
 				A31790B91C8D4705007C6311 /* JDStatusBarView.m in Sources */,
+				A3D4BAEC1C9ACAF500BE2111 /* RDVSecondViewController.m in Sources */,
 				A31790EC1C8D71D3007C6311 /* Register.m in Sources */,
 				A3F2E8471C85926A0029C63E /* MMDrawerBarButtonItem.m in Sources */,
 				A302D47D1C97B5FB00069037 /* QRCScannerViewController.m in Sources */,

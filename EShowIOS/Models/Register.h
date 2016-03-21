@@ -13,4 +13,5 @@
 @property (nonatomic , strong , readwrite) NSString *username, *type;
 
 - (NSDictionary *)toParams;
+
 @end

@@ -34,7 +34,6 @@
 //添加myTableView
     _myTableView = ({
         TPKeyboardAvoidingTableView *tableView = [[TPKeyboardAvoidingTableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-        [tableView registerNib:[UINib nibWithNibName:kCellIdentifier_Input_OnlyText_Cell bundle:[NSBundle mainBundle]] forCellReuseIdentifier:kCellIdentifier_Input_OnlyText_Cell];
         tableView.backgroundColor = [UIColor colorWithRed:(247.0 / 255.0f) green:(247.0 /255.0f) blue:(240.0 / 255.0f) alpha:1.0f];
         tableView.dataSource = self;
         tableView.delegate = self;
@@ -141,6 +140,13 @@
 {
     [self.username_textField resignFirstResponder];
 
+    if ([self.username_textField.text length] !=11) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请输入正确的手机号码" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+        
+        return;
+    }
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/plain"];
@@ -151,16 +157,41 @@
                    @"type":@"register"
                    }
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-    
-             RegisterCaptchaViewController *captchaVC = [[RegisterCaptchaViewController alloc] init];
-             captchaVC.usernameArray = [NSMutableArray arrayWithObject:@"user.username"];
-             [self.navigationController pushViewController:captchaVC animated:YES];
-         
+             
+             NSDictionary *dic = responseObject;
+             
+             NSString *str = [NSString stringWithFormat:@"msg:%@;status:%@",dic[@"msg"],dic[@"status"]];
+             
+             NSLog(@"显示数据:%@",str);
+             
+             if (dic[@"status"] == nil) {
+                 return;
+             }else if ([dic[@"status"] intValue] == 1){
+                 
+                 RegisterCaptchaViewController *captchaVC = [[RegisterCaptchaViewController alloc] init];
+                 [self.navigationController pushViewController:captchaVC animated:YES];
+                 
+                 NSString *userName = self.username_textField.text;
+                 NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                 [userDefaults setObject:userName forKey:@"remember.telephone"];
+                 
+             }else if ([dic[@"status"] intValue] == -5){
+             
+                 [self.view makeToast:dic[@"msg"] duration:2 position:@"center"];
+                 return;
+                 
+             }else{
+             
+                 [self.view makeToast:dic[@"msg"] duration:2 position:@"center"];
+                 return;
+             }
+
          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         
+             
              NSLog(@"error: %@", error);
-         
+             
          }];
+    
 }
 
 #pragma mark TTTAttributedLabelDelegate

@@ -8,6 +8,7 @@
 
 #import "LeftViewController.h"
 #import "LoginViewController.h"
+#import "CenterTableViewController.h"
 
 @interface LeftViewController ()
 
@@ -99,7 +100,8 @@
         case 0:
         {
             LoginViewController *login_vc = [[LoginViewController alloc] init];
-            [self.navigationController pushViewController:login_vc animated:YES];
+            UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:login_vc];
+            [self presentModalViewController:navController animated:YES];
         
             break;
         }
@@ -112,14 +114,22 @@
             
         default:
         {
-            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-            [userDefaults removeObjectForKey:@"user.username"];
-            [userDefaults removeObjectForKey:@"user.password"];
-            [userDefaults synchronize];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"退出系统" message:@"是否确定退出登录" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            [alert show];
             
             break;
         }
     }
 }
 
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults removeObjectForKey:@"user.username"];
+        [userDefaults removeObjectForKey:@"user.password"];
+        [userDefaults synchronize];
+
+    }
+}
 @end

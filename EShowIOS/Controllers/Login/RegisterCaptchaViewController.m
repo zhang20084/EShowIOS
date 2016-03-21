@@ -91,7 +91,7 @@
             _captcha_textField.clearButtonMode = UITextFieldViewModeAlways;
             [cell.contentView addSubview:_captcha_textField];
 
-            _captchaBtn = [UIButton buttonWithStyle:StrapInfoStyle andTitle:@"语音播报" andFrame:CGRectMake(ScreenWidth-117, 7.5, 101, 40) target:self action:@selector(voicePrompt)];
+            _captchaBtn = [UIButton buttonWithStyle:StrapSuccessStyle andTitle:@"语音播报" andFrame:CGRectMake(ScreenWidth-117, 7.5, 101, 40) target:self action:@selector(voicePrompt)];
             [cell.contentView addSubview:_captchaBtn];
 
         }
@@ -153,11 +153,14 @@
     
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/plain"];
     
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *registerUserNam = [userDefault objectForKey:@"user.username"];
+    
     [manager POST:[NSString stringWithFormat:@"http://api.eshow.org.cn/user/signup.json?"]
       parameters:@{
                    @"user.password" : self.paaaword_textField.text,
                    @"code": self.captcha_textField.text,
-                   @"user.username": @"13771234900",
+                   @"user.username": registerUserNam,
                    }
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              
@@ -172,6 +175,73 @@
 
 - (void)voicePrompt
 {
-
+    __block int timeout = 60;
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,queue);
+    dispatch_source_set_timer(_timer, dispatch_walltime(NULL, 0), 1.0*NSEC_PER_SEC, 0);
+    dispatch_source_set_event_handler(_timer, ^{
+        if(timeout<=0){
+            dispatch_source_cancel(_timer);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [_captchaBtn setTitle:@"语音播报" forState:UIControlStateNormal];
+                _captchaBtn.userInteractionEnabled = YES;
+            });
+        }else{
+            int seconds = timeout % 60;
+            NSString *strTime = [NSString stringWithFormat:@"%.2d", seconds];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [UIView beginAnimations:nil context:nil];
+                [UIView setAnimationDuration:1];
+                [_captchaBtn setTitle:[NSString stringWithFormat:@"%@秒重发",strTime] forState:UIControlStateNormal];
+                [UIView commitAnimations];
+                _captchaBtn.userInteractionEnabled = NO;
+            });
+            timeout--;
+        }
+    });
+    dispatch_resume(_timer);
+    
+    
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/plain"];
+    
+    [manager GET:[NSString stringWithFormat:@"http://api.eshow.org.cn/code/voice.json?"]
+      parameters:@{
+                   @"mobile" : [[NSUserDefaults standardUserDefaults] objectForKey:@"remember.telephone"],
+                   @"type":@"register",
+                   }
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             
+             NSDictionary *dic = responseObject;
+             
+             NSString *str = [NSString stringWithFormat:@"msg:%@;status:%@",dic[@"msg"],dic[@"status"]];
+             
+             NSLog(@"success = %@",str);
+             
+             if (dic[@"status"] == nil) {
+                 return;
+             }else if ([dic[@"status"] intValue] == 0)
+             {
+                 [self.view makeToast:dic[@"msg"] duration:2 position:@"center"];
+                 return;
+                 
+             }else if ([dic[@"status"]intValue] == 1){
+             
+                 [self.view makeToast:dic[@"msg"] duration:2 position:@"center"];
+                 
+             }else{
+             
+                 [self.view makeToast:dic[@"msg"] duration:2 position:@"center"];
+                 return;
+             }
+             
+             
+         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             
+             NSLog(@"error: %@", error);
+             
+         }];
 }
 @end

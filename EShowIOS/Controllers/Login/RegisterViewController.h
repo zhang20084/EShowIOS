@@ -13,4 +13,6 @@
 
 @property (nonatomic, strong) Register *myRegister;
 
+@property (nonatomic, strong) NSString *typeChoose;
+
 @end

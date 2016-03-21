@@ -7,13 +7,14 @@
 //
 
 #import "CenterTableViewController.h"
-#import "PersonalInformationViewController.h"
+#import "PersonalInformationViewController.h"//个人信息页面
 #import "UMSocial.h"
 #import "AddressPickerViewController.h"//城市选择
 #import "ShareViewController.h"//分享
 #import "PopMenu.h"//加号按钮
 #import "QRCScannerViewController.h"//扫一扫
 #import "RDVTabBarController.h"
+#import "BaseRDVTabViewController.h"
 
 @interface CenterTableViewController () <UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate,UMSocialUIDelegate>
 @property (nonatomic, strong) UITableView *myTableView;
@@ -76,9 +77,9 @@
 #pragma make VC
 - (void)addItemClicked:(id)sender
 {
-    NSArray *menuItems = @[[MenuItem itemWithTitle:@"扫一扫" iconName:@"" index:0],
-                           [MenuItem itemWithTitle:@"系统信息" iconName:@"" index:1],
-                           [MenuItem itemWithTitle:@"透传信息" iconName:@"" index:2],
+    NSArray *menuItems = @[[MenuItem itemWithTitle:@"扫一扫" iconName:@"saoyisao" index:0],
+                           [MenuItem itemWithTitle:@"系统信息" iconName:@"xitongmessage" index:1],
+                           [MenuItem itemWithTitle:@"透传信息" iconName:@"touchuanmessage" index:2],
                            ];
     
     if (!_myPopMenu){
@@ -193,7 +194,9 @@
     switch (indexPath.row) {
         case 0:
         {
-            PersonalInformationViewController *personalInformation = [[PersonalInformationViewController alloc] init];
+//            PersonalInformationViewController *personalInformation = [[PersonalInformationViewController alloc] init];
+//            [self.navigationController pushViewController:personalInformation animated:YES];
+            BaseRDVTabViewController *personalInformation = [[BaseRDVTabViewController alloc] init];
             [self.navigationController pushViewController:personalInformation animated:YES];
             
             break;
@@ -201,8 +204,8 @@
             
         case 3:
         {
-//            AddressPickerViewController *addressPicker_vc = [[AddressPickerViewController alloc] init];
-//            [self.navigationController pushViewController:addressPicker_vc animated:YES];
+            AddressPickerViewController *addressPicker_vc = [[AddressPickerViewController alloc] init];
+            [self.navigationController pushViewController:addressPicker_vc animated:YES];
             
             break;
         }

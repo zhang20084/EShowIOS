@@ -39,10 +39,6 @@
     
     UINavigationController * navigationController = [[BaseNavigationController alloc] initWithRootViewController:centerViewController];
     
-//    self.drawerController = [[MMDrawerController alloc]
-//                             initWithCenterViewController:navigationController
-//                             leftDrawerViewController:leftSideNavController];
-    
     self.centerViewController = navigationController;
     
 }

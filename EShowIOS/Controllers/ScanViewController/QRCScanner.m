@@ -117,7 +117,7 @@
 }
 #pragma mark 添加手电筒功能按钮
 - (void)addLightButton:(CGRect)rect{
-    _lightButton = [[UIButton alloc]initWithFrame:CGRectMake((self.bounds.size.width - 80)/2, (rect.origin.y + rect.size.height+40), 80, 30)];
+    _lightButton = [[UIButton alloc]initWithFrame:CGRectMake((self.bounds.size.width - 40)/2, 100, 40, 40)];
     [_lightButton setBackgroundImage:[UIImage imageNamed:@"scan_light_close"] forState:UIControlStateNormal];
     [_lightButton addTarget:self action:@selector(torchSwitch:) forControlEvents:UIControlEventTouchUpInside];
     [_lightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
