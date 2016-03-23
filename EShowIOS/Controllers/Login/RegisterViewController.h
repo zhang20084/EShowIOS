@@ -7,11 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Register.h"
 
 @interface RegisterViewController : UIViewController
-
-@property (nonatomic, strong) Register *myRegister;
 
 @property (nonatomic, strong) NSString *typeChoose;
 

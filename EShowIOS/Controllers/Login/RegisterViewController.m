@@ -12,7 +12,6 @@
 #import "Input_OnlyText_Cell.h"//文本
 #import "UITTTAttributedLabel.h"
 #import "AppDelegate.h"
-#import <MBProgressHUD.h>
 #import "AFNetworking.h"
 
 @interface RegisterViewController ()<UITableViewDataSource,UITableViewDelegate,TTTAttributedLabelDelegate>
@@ -21,7 +20,6 @@
 @property (strong, nonatomic) TPKeyboardAvoidingTableView *myTableView;
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) UITextField *username_textField;
-@property (nonatomic, strong) MBProgressHUD *hud;
 
 @end
 
@@ -86,7 +84,7 @@
     
     if (indexPath.row == 0) {
         self.username_textField = [[UITextField alloc] init];
-        self.username_textField.frame = CGRectMake(20, 0, ScreenWidth-20, 55.0);
+        self.username_textField.frame = CGRectMake(20.0f, 0, ScreenWidth-30.0f, 55.0f);
         self.username_textField.keyboardType = UIKeyboardTypeNumberPad;
         self.username_textField.placeholder = @"请输入手机号码";
         self.username_textField.clearButtonMode = UITextFieldViewModeAlways;

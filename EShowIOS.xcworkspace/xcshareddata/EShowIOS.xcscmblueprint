@@ -1,0 +1,32 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "6081CC10410D5F235636016BCF75E6AED9C2BF3B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "46558fe7-3072-4e8b-a03d-328f12219588++5152" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "6081CC10410D5F235636016BCF75E6AED9C2BF3B" : 0,
+    "46558fe7-3072-4e8b-a03d-328f12219588++5152" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "AB21A719-906C-43A6-84CF-8467549B9CCB",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "6081CC10410D5F235636016BCF75E6AED9C2BF3B" : "EShowIOS\/",
+    "46558fe7-3072-4e8b-a03d-328f12219588++5152" : "EShowIOS\/EShowIOS\/Vendor\/Toast\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "EShowIOS",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "EShowIOS.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/svn.bangqu.com:9999\/yinwan",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "46558fe7-3072-4e8b-a03d-328f12219588++5152"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/bangqu\/EShowIOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6081CC10410D5F235636016BCF75E6AED9C2BF3B"
+    }
+  ]
+}

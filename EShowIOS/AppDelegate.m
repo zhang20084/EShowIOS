@@ -14,6 +14,9 @@
 #import "UMSocialQQHandler.h"
 #import "UMSocialWechatHandler.h"
 #import "UMSocial.h"
+#import <MapKit/MapKit.h>
+#import <AMapLocationKit/AMapLocationKit.h>
+
 
 @interface AppDelegate ()
 
@@ -26,6 +29,11 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
+    //监测接口
+
+    
+    //高德Key
+    [AMapLocationServices sharedServices].apiKey = @"49e47cbf981bd30f5f2d1aca34e2e80f";
     
     //设置友盟AppKey
     [UMSocialData setAppKey:@"56ceca68e0f55a2ece000d68"];
@@ -48,7 +56,7 @@
     }else{
         [self setupTabViewController];
     }
-    
+
     [self.window makeKeyAndVisible];
     
     return YES;

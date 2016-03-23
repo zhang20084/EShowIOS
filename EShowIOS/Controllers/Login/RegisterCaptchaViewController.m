@@ -153,19 +153,16 @@
     
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/plain"];
     
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSString *registerUserNam = [userDefault objectForKey:@"user.username"];
-    
     [manager POST:[NSString stringWithFormat:@"http://api.eshow.org.cn/user/signup.json?"]
       parameters:@{
                    @"user.password" : self.paaaword_textField.text,
                    @"code": self.captcha_textField.text,
-                   @"user.username": registerUserNam,
+                   @"user.username": [[NSUserDefaults standardUserDefaults] objectForKey:@"remember.telephone"],
                    }
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              
              [((AppDelegate *)[UIApplication sharedApplication].delegate) setupTabViewController];
-             
+
          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              
              NSLog(@"error: %@", error);

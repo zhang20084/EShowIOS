@@ -8,7 +8,7 @@
 
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
-#import "ForgetPasswordViewController.h"
+#import "ForgetTelephoneViewController.h"
 #import "TPKeyboardAvoidingTableView.h"
 #import "UITTTAttributedLabel.h"
 #import "AppDelegate.h"
@@ -268,7 +268,7 @@
 
 - (void)cannotLoginBtnClicked:(id)sender {
 
-    ForgetPasswordViewController *forget_vc = [[ForgetPasswordViewController alloc] init];
+    ForgetTelephoneViewController *forget_vc = [[ForgetTelephoneViewController alloc] init];
     [self.navigationController pushViewController:forget_vc animated:YES];
     
 }
@@ -300,7 +300,7 @@
     
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/plain"];
     
-    [manager POST:[NSString stringWithFormat:@"http://api.eshow.org.cn/user/login.json?"]
+    [manager POST:[NSString stringWithFormat:@"%@user/login.json?",BaseUrl]
              parameters:@{
                           
                           @"user.password" : self.password_text.text,
@@ -360,6 +360,54 @@
             UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary]valueForKey:UMShareToWechatSession];
             
             NSLog(@"username is %@, uid is %@, token is %@ url is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL);
+            
+            //调用接口
+            AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+            
+            manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/plain"];
+            
+            [manager POST:[NSString stringWithFormat:@"http://api.eshow.org.cn/user/third.json?"]
+               parameters:@{
+                            
+                            @"thirdParty.platform" : @"weixin",
+                            @"thirdParty.nickname" : snsAccount.userName,
+                            @"thirdParty.username.url" : snsAccount.iconURL,
+                            @"thirdParty.username" : snsAccount.accessToken,
+                            
+                            } success:^(AFHTTPRequestOperation *operation,id responseObject) {
+                                
+                                NSDictionary *dic = responseObject;
+                                
+                                NSString *str = [NSString stringWithFormat:@"msg:%@;status:%@",dic[@"msg"],dic[@"status"]];
+                                
+                                NSLog(@"显示数据:%@",str);
+                                
+                                if (dic[@"status"] == nil) {
+                                    return;
+                                }else if ([dic[@"status"] intValue] == 0){
+                                    
+                                    [self.view makeToast:dic[@"msg"] duration:2 position:@"center"];
+                                    return;
+                                    
+                                }else if ([dic[@"status"] intValue] == 1){
+                                    
+                                    [((AppDelegate *)[UIApplication sharedApplication].delegate) setupTabViewController];
+                                    
+                                    [self.view makeToast:dic[@"msg"] duration:2 position:@"center"];
+                                    
+                                }else if ([dic[@"status"] intValue] == -5){
+                                    
+                                    [self.view makeToast:dic[@"msg"] duration:2 position:@"center"];
+                                    return;
+                                    
+                                }
+                                
+                            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                
+                                NSLog(@"error: %@", error);
+                                
+                            }];
+
         }
 
     });
@@ -378,6 +426,54 @@
             UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary] valueForKey:UMShareToQQ];
             
             NSLog(@"username is %@, uid is %@, token is %@ url is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL);
+            
+            
+            //调用接口
+            AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+            
+            manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/plain"];
+            
+            [manager POST:[NSString stringWithFormat:@"http://api.eshow.org.cn/user/third.json?"]
+               parameters:@{
+                            
+                            @"thirdParty.platform" : @"qq",
+                            @"thirdParty.nickname" : snsAccount.userName,
+                            @"thirdParty.username.url" : snsAccount.iconURL,
+                            @"thirdParty.username" : snsAccount.accessToken,
+                            
+                            } success:^(AFHTTPRequestOperation *operation,id responseObject) {
+                                
+                                NSDictionary *dic = responseObject;
+                                
+                                NSString *str = [NSString stringWithFormat:@"msg:%@;status:%@",dic[@"msg"],dic[@"status"]];
+                                
+                                NSLog(@"显示数据:%@",str);
+                                
+                                if (dic[@"status"] == nil) {
+                                    return;
+                                }else if ([dic[@"status"] intValue] == 0){
+                                    
+                                    [self.view makeToast:dic[@"msg"] duration:2 position:@"center"];
+                                    return;
+                                    
+                                }else if ([dic[@"status"] intValue] == 1){
+                                    
+                                    [((AppDelegate *)[UIApplication sharedApplication].delegate) setupTabViewController];
+                                    
+                                    [self.view makeToast:dic[@"msg"] duration:2 position:@"center"];
+                                    
+                                }else if ([dic[@"status"] intValue] == -5){
+                                    
+                                    [self.view makeToast:dic[@"msg"] duration:2 position:@"center"];
+                                    return;
+                                    
+                                }
+                                
+                            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                
+                                NSLog(@"error: %@", error);
+                                
+                            }];
             
         }});
 }

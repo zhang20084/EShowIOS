@@ -13,6 +13,7 @@
 #import "ShareViewController.h"//分享
 #import "PopMenu.h"//加号按钮
 #import "QRCScannerViewController.h"//扫一扫
+#import "MapViewController.h"
 #import "RDVTabBarController.h"
 #import "BaseRDVTabViewController.h"
 
@@ -50,7 +51,6 @@
     _myTableView.backgroundColor = [UIColor whiteColor];
     _myTableView.dataSource = self;
     _myTableView.delegate = self;
-    _myTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     [self.view addSubview:_myTableView];
 
     [self setupNavBtn];
@@ -209,6 +209,14 @@
             
             break;
         }
+        case 5:
+        {
+            
+            MapViewController *map_vc = [[MapViewController alloc] init];
+            [self.navigationController pushViewController:map_vc animated:YES];
+            break;
+        }
+            
         case 7:
         {
             ShareViewController *share_vc = [[ShareViewController alloc] init];

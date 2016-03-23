@@ -64,11 +64,6 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string></string>
 	<key>NSLocationWhenInUsageDescription</key>
@@ -103,5 +98,19 @@
 		<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
 		<false/>
 	</dict>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>iosamap</string>
+    </array>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>weixin</string>
+        <string>wechat</string>
+    </array>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+    </dict>
 </dict>
 </plist>

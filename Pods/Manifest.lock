@@ -23,6 +23,7 @@ PODS:
   - AFOnoResponseSerializer (1.0.0):
     - AFNetworking (~> 2.2)
     - Ono (~> 1.0)
+  - AMapLocation (1.2.0)
   - CTAssetsPickerController (2.9.5)
   - DTCoreText (1.6.17):
     - DTFoundation/Core (~> 1.7.5)
@@ -68,6 +69,7 @@ PODS:
 
 DEPENDENCIES:
   - AFOnoResponseSerializer
+  - AMapLocation
   - CTAssetsPickerController
   - DTCoreText
   - GPUImage
@@ -92,6 +94,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   AFOnoResponseSerializer: c02c8bef1d6742ac68f33ecaed41826c9657bc33
+  AMapLocation: 6d72a8f1c5f2a29a736fcaca3a85173ba3dc5f56
   CTAssetsPickerController: b413fece2194ae3dbf22fbc544cf6f2a6d516a4d
   DTCoreText: 3ea8bba23dd2141ba18adb227a7dd33a822df1c4
   DTFoundation: 70a0765e3596f82dd421832e95c65e2166eb3102

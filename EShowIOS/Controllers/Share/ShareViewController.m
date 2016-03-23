@@ -7,8 +7,10 @@
 //
 
 #import "ShareViewController.h"
+#import "UMSocial.h"
 
-@interface ShareViewController ()
+@interface ShareViewController () <UMSocialUIDelegate>
+
 @property (nonatomic, strong)UIButton *shareBtn;
 @end
 
@@ -36,7 +38,7 @@
 
 - (void)sendShare
 {
-    
+    [UMSocialSnsService presentSnsIconSheetView:self appKey:@"56ceca68e0f55a2ece000d68" shareText:@"你要分享的文字" shareImage:[UIImage imageNamed:@"icon.png"] shareToSnsNames:[NSArray arrayWithObjects:UMShareToWechatSession,UMShareToWechatTimeline,UMShareToQzone,UMShareToQQ,nil] delegate:self];
 }
 
 - (void)didReceiveMemoryWarning {

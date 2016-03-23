@@ -187,7 +187,7 @@
     
     [manager GET:[NSString stringWithFormat:@"http://api.eshow.org.cn/code/voice.json?"]
       parameters:@{
-                   @"mobile" : @"",
+                   @"mobile" : [[NSUserDefaults standardUserDefaults] objectForKey:@"forget.telephone"],
                    @"type":@"change",
                    }
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -241,9 +241,9 @@
     
     [manager GET:[NSString stringWithFormat:@"http://api.eshow.org.cn/user/password.json?"]
       parameters:@{
-                   @"user.password" : _newpassword.text,
                    @"code" : _captcha_password.text,
-                   @"user.username" : [[NSUserDefaults standardUserDefaults] objectForKey:@"remember.telephone"],
+                   @"user.password" : _newpassword.text,
+                   @"user.username" : [[NSUserDefaults standardUserDefaults] objectForKey:@"forget.telephone"],
                    }
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              
