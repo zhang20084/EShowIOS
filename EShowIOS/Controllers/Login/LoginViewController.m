@@ -34,6 +34,7 @@
 @property (strong, nonatomic) UILabel *otherLoginWay;
 
 @property (strong, nonatomic) NSString *msg, *status;
+
 @end
 
 @implementation LoginViewController
@@ -323,13 +324,68 @@
                                   
                               }else if ([dic[@"status"] intValue] == 1){
                               
+                                  [self.view makeToast:dic[@"msg"] duration:2 position:@"center"];
+                                  
                                   NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
                                   [userDefaults setObject:userName forKey:@"user.username"];
                                   [userDefaults setObject:passwordNum forKey:@"user.password"];
                                   [userDefaults synchronize];
                                   [((AppDelegate *)[UIApplication sharedApplication].delegate) setupTabViewController];
                                   
-                                  [self.view makeToast:dic[@"msg"] duration:2 position:@"center"];
+                                  //返回user对象
+                                  if(![dic[@"user"][@"photo"] isKindOfClass:[NSNull class]])
+                                  {
+                                      [[NSUserDefaults standardUserDefaults] setObject:dic[@"user"][@"photo"] forKey:@"user.photo"];
+                                  }
+                                  
+                                  if (![dic[@"user"][@"realname"] isKindOfClass:[NSNull class]]) {
+                                      [[NSUserDefaults standardUserDefaults] setObject:dic[@"user"][@"realname"] forKey:@"realname"];
+                                  }else{
+                                      [[NSUserDefaults standardUserDefaults] setObject:@"未填写" forKey:@"realname"];
+                                  }
+                                  
+                                  if (![dic[@"user"][@"realname"] isKindOfClass:[NSNull class]]) {
+                                      [[NSUserDefaults standardUserDefaults] setObject:dic[@"user"][@"realname"] forKey:@"user.realname"];
+                                  } else {
+                                      [[NSUserDefaults standardUserDefaults] setObject:@"未填写" forKey:@"user.realname"];
+                                  }
+                                  
+                                  if (![dic[@"user"][@"nickname"] isKindOfClass:[NSNull class]]) {
+                                      [[NSUserDefaults standardUserDefaults] setObject:dic[@"user"][@"nickname"] forKey:@"user.nickname"];
+                                  } else {
+                                      [[NSUserDefaults standardUserDefaults] setObject:@"未填写" forKey:@"user.nickname"];
+                                  }
+                                  
+                                  if (![dic[@"user"][@"age"] isKindOfClass:[NSNull class]]) {
+                                      [[NSUserDefaults standardUserDefaults] setInteger:[dic[@"user"][@"age"] intValue]forKey:@"user.age"];
+                                  } else {
+                                      [[NSUserDefaults standardUserDefaults] setObject:@"未填写" forKey:@"user.age"];
+                                  }
+                                  
+                                  if (![dic[@"user"][@"male"] isKindOfClass:[NSNull class]]) {
+                                      [[NSUserDefaults standardUserDefaults] setInteger:[dic[@"user"][@"male"] boolValue]forKey:@"user.male"];
+                                  } else {
+                                      [[NSUserDefaults standardUserDefaults] setObject:@"未知" forKey:@"user.male"];
+                                  }
+                                  
+                                  
+                                  if (![dic[@"user"][@"email"] isKindOfClass:[NSNull class]]) {
+                                      [[NSUserDefaults standardUserDefaults] setObject:dic[@"user"][@"email"] forKey:@"user.email"];
+                                  } else {
+                                      [[NSUserDefaults standardUserDefaults] setObject:@"请选择" forKey:@"user.email"];
+                                  }
+                                  
+                                  if (![dic[@"user"][@"birthday"] isKindOfClass:[NSNull class]]) {
+                                      [[NSUserDefaults standardUserDefaults] setObject:dic[@"user"][@"birthday"] forKey:@"user.birthday"];
+                                  } else {
+                                      [[NSUserDefaults standardUserDefaults] setObject:@"请选择" forKey:@"user.birthday"];
+                                  }
+                                  
+                                  if (![dic[@"user"][@"intro"] isKindOfClass:[NSNull class]]) {
+                                      [[NSUserDefaults standardUserDefaults] setObject:dic[@"user"][@"intro"]forKey:@"user.intro"] ;
+                                  } else {
+                                      [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"user.intro"];
+                                  }
                                   
                               }else if ([dic[@"status"] intValue] == -5){
                               

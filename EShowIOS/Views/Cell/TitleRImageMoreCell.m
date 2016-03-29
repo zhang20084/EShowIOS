@@ -1,19 +1,18 @@
 //
 //  TitleRImageMoreCell.m
-//  Coding_iOS
+//  EShowIOS
 //
-//  Created by 王 原闯 on 14-9-3.
-//  Copyright (c) 2014年 Coding. All rights reserved.
+//  Created by 金璟 on 16/3/25.
+//  Copyright © 2016年 金璟. All rights reserved.
 //
-
-#define kTitleRImageMoreCell_HeightIcon 50.0
+#define kTitleRImageMoreCell_HeightIcon 60.0
 
 #import "TitleRImageMoreCell.h"
-#import "UIView+common.h"
+#import "UIImageView+WebCache.h"
 
 @interface TitleRImageMoreCell ()
-@property (strong, nonatomic) UILabel *titleLabel;
-@property (strong, nonatomic) UIImageView *userIconView;
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UIImageView *userIconView;
 @end
 @implementation TitleRImageMoreCell
 
@@ -21,7 +20,6 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Initialization code
         self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         self.backgroundColor = [UIColor whiteColor];
         if (!_titleLabel) {
@@ -33,23 +31,24 @@
         }
         if (!_userIconView) {
             _userIconView = [[UIImageView alloc] initWithFrame:CGRectMake((ScreenWidth- kTitleRImageMoreCell_HeightIcon)- kPaddingLeftWidth- 30, ([TitleRImageMoreCell cellHeight] -kTitleRImageMoreCell_HeightIcon)/2, kTitleRImageMoreCell_HeightIcon, kTitleRImageMoreCell_HeightIcon)];
-//            [_userIconView doCircleFrame];
+            _userIconView.layer.masksToBounds = YES;
+            _userIconView.layer.cornerRadius = 10;
             [self.contentView addSubview:_userIconView];
         }
     }
     return self;
 }
 
-- (void)layoutSubviews{
+- (void)layoutSubviews
+{
     [super layoutSubviews];
-    if (!_curUser) {
-        return;
-    }
+
     self.titleLabel.text = @"头像";
-//    [self.userIconView sd_setImageWithURL:[_curUser.avatar urlImageWithCodePathResizeToView:_userIconView] placeholderImage:kPlaceholderMonkeyRoundView(_userIconView)];
+    [_userIconView sd_setImageWithURL:[NSURL URLWithString:[[NSUserDefaults standardUserDefaults] stringForKey:@"user.photo"]]placeholderImage:kPlaceholderMonkeyRoundView(_userIconView)];
 }
 
-+ (CGFloat)cellHeight{
++ (CGFloat)cellHeight
+{
     return 70.0;
 }
 

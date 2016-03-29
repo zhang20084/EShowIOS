@@ -16,9 +16,9 @@
 #import "UMSocial.h"
 #import <MapKit/MapKit.h>
 #import <AMapLocationKit/AMapLocationKit.h>
+#import <TestinAgent/TestinAgent.h>//监控
 
-
-@interface AppDelegate ()
+@interface AppDelegate () <TestinDelegate>
 
 @end
 
@@ -30,7 +30,12 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
     //监测接口
-
+//    TestinConfig *config = [TestinConfig defaultConfig];
+//    config.printLogForDebug = YES;
+//    config.collectorNSURLConnection = YES;
+//    config.collectorNSURLSession = YES;
+//    config.useSecurityHttpConnection = NO;
+//    [TestinAgent init:@"647b9ebadc0598b7de25b71d5b6e6490" channel:@"" config:config];
     
     //高德Key
     [AMapLocationServices sharedServices].apiKey = @"49e47cbf981bd30f5f2d1aca34e2e80f";
@@ -123,4 +128,8 @@
     return  [UMSocialSnsService handleOpenURL:url];
 }
 
+-(void)init:(nonnull NSString*)appId channel:(nullable NSString*)channel config:(nullable TestinConfig*)config;
+{
+
+}
 @end
