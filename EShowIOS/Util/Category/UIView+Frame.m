@@ -1,9 +1,9 @@
 //
 //  UIView+Frame.m
-//  Coding_iOS
+//  EShowIOS
 //
-//  Created by pan Shiyu on 15/7/16.
-//  Copyright (c) 2015年 Coding. All rights reserved.
+//  Created by 金璟 on 16/2/25.
+//  Copyright © 2016年 JinJing. All rights reserved.
 //
 
 #import "UIView+Frame.h"

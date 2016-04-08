@@ -52,17 +52,18 @@
 #define  kNavTitleFontSize 18
 #define  kBadgeTipStr @"badgeTip"
 
-#define OpenDrawer          @"leftdrawer_open"
-#define CloseDrawer         @"leftdrawer_close"
-#define ToggleDrawer        @"leftdrawer_toggle"
-
 #define kPlaceholderMonkeyRoundWidth(_width_) [UIImage imageNamed:[NSString stringWithFormat:@"placeholder_monkey_round_%.0f", _width_]]
 #define kPlaceholderMonkeyRoundView(_view_) [UIImage imageNamed:[NSString stringWithFormat:@"placeholder_monkey_round_%.0f", CGRectGetWidth(_view_.frame)]]
+
+#define ColorTableSectionBg [UIColor colorWithRed:(247.0 / 255.0f) green:(247.0 /255.0f) blue:(240.0 / 255.0f) alpha:1.0f]
 
 //链接颜色
 #define kLinkAttributes     @{(__bridge NSString *)kCTUnderlineStyleAttributeName : [NSNumber numberWithBool:NO],(NSString *)kCTForegroundColorAttributeName : (__bridge id)[UIColor colorWithHexString:@"0xFF7256"].CGColor}
 #define kLinkAttributesActive       @{(NSString *)kCTUnderlineStyleAttributeName : [NSNumber numberWithBool:NO],(NSString *)kCTForegroundColorAttributeName : (__bridge id)[[UIColor colorWithHexString:@"0xFF7256"] CGColor]}
 
 #define BaseUrl @"http://api.eshow.org.cn/"
+
+#define GDKEY @"49e47cbf981bd30f5f2d1aca34e2e80f"
+
 
 #endif /* EShowIOS_pch */

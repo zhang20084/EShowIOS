@@ -1,9 +1,9 @@
 //
 //  UIView+Extension.m
-//  Test
+//  EShowIOS
 //
-//  Created by caowenbo on 14/08/19.
-//  Copyright © 2014年 曹文博. All rights reserved.
+//  Created by 金璟 on 16/2/25.
+//  Copyright © 2016年 JinJing. All rights reserved.
 //
 
 #import "UIView+Extension.h"

@@ -1,9 +1,9 @@
 //
 //  UIButton+Bootstrap.m
-//  UIButton+Bootstrap
+//  EShowIOS
 //
-//  Created by Oskur on 2013-09-29.
-//  Copyright (c) 2013 Oskar Groth. All rights reserved.
+//  Created by 金璟 on 16/2/25.
+//  Copyright © 2016年 JinJing. All rights reserved.
 //
 #import "UIButton+Bootstrap.h"
 #import <QuartzCore/QuartzCore.h>

@@ -1,9 +1,9 @@
 //
 //  UITTTAttributedLabel.h
-//  Coding_iOS
+//  EShowIOS
 //
-//  Created by 王 原闯 on 14-8-8.
-//  Copyright (c) 2014年 Coding. All rights reserved.
+//  Created by 金璟 on 16/2/25.
+//  Copyright © 2016年 JinJing. All rights reserved.
 //
 
 #import "TTTAttributedLabel.h"

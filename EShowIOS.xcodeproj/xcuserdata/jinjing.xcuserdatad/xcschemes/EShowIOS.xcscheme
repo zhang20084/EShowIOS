@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A3F2E7B31C8545350029C63E"
+               BlueprintIdentifier = "A3EDB5E21CAE4B5100C8A204"
                BuildableName = "EShowIOS.app"
                BlueprintName = "EShowIOS"
                ReferencedContainer = "container:EShowIOS.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A3F2E7CC1C8545350029C63E"
+               BlueprintIdentifier = "A3EDB5FB1CAE4B5100C8A204"
                BuildableName = "EShowIOSTests.xctest"
                BlueprintName = "EShowIOSTests"
                ReferencedContainer = "container:EShowIOS.xcodeproj">
@@ -42,7 +42,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A3F2E7D71C8545350029C63E"
+               BlueprintIdentifier = "A3EDB6061CAE4B5100C8A204"
                BuildableName = "EShowIOSUITests.xctest"
                BlueprintName = "EShowIOSUITests"
                ReferencedContainer = "container:EShowIOS.xcodeproj">
@@ -52,7 +52,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A3F2E7B31C8545350029C63E"
+            BlueprintIdentifier = "A3EDB5E21CAE4B5100C8A204"
             BuildableName = "EShowIOS.app"
             BlueprintName = "EShowIOS"
             ReferencedContainer = "container:EShowIOS.xcodeproj">
@@ -75,7 +75,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A3F2E7B31C8545350029C63E"
+            BlueprintIdentifier = "A3EDB5E21CAE4B5100C8A204"
             BuildableName = "EShowIOS.app"
             BlueprintName = "EShowIOS"
             ReferencedContainer = "container:EShowIOS.xcodeproj">
@@ -94,7 +94,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A3F2E7B31C8545350029C63E"
+            BlueprintIdentifier = "A3EDB5E21CAE4B5100C8A204"
             BuildableName = "EShowIOS.app"
             BlueprintName = "EShowIOS"
             ReferencedContainer = "container:EShowIOS.xcodeproj">

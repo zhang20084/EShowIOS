@@ -23,8 +23,6 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>wxe0304d6eff6e6307</string>
@@ -40,38 +38,72 @@
 				<string>tencent1105243226</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>EShowIOS</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fuckEShow</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-		<string>mqqOpensdkSSoLogin</string>
-		<string>mqzone</string>
-		<string>sinaweibo</string>
-		<string>alipayauth</string>
-		<string>alipay</string>
-		<string>safepay</string>
-		<string>mqq</string>
-		<string>mqqapi</string>
-		<string>mqqopensdkapiV3</string>
-		<string>mqqopensdkapiV2</string>
-		<string>mqqapiwallet</string>
-		<string>mqqwpa</string>
-		<string>mqqbrowser</string>
-		<string>wtloginmqq2</string>
-		<string>weixin</string>
+		<string>iosamap</string>
 		<string>wechat</string>
+		<string>weixin</string>
+		<string>sinaweibohd</string>
+		<string>sinaweibo</string>
+		<string>sinaweibosso</string>
+		<string>weibosdk</string>
+		<string>weibosdk2.5</string>
+		<string>mqqapi</string>
+		<string>mqq</string>
+		<string>mqqOpensdkSSoLogin</string>
+		<string>mqqconnect</string>
+		<string>mqqopensdkdataline</string>
+		<string>mqqopensdkgrouptribeshare</string>
+		<string>mqqopensdkfriend</string>
+		<string>mqqopensdkapi</string>
+		<string>mqqopensdkapiV2</string>
+		<string>mqqopensdkapiV3</string>
+		<string>mqzoneopensdk</string>
+		<string>wtloginmqq</string>
+		<string>wtloginmqq2</string>
+		<string>mqqwpa</string>
+		<string>mqzone</string>
+		<string>mqzonev2</string>
+		<string>mqzoneshare</string>
+		<string>wtloginqzone</string>
+		<string>mqzonewx</string>
+		<string>mqzoneopensdkapiV2</string>
+		<string>mqzoneopensdkapi19</string>
+		<string>mqzoneopensdkapi</string>
+		<string>mqqbrowser</string>
+		<string>mttbrowser</string>
+		<string>alipay</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string></string>
-	<key>NSLocationWhenInUsageDescription</key>
-	<string></string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
+	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -98,19 +130,55 @@
 		<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
 		<false/>
 	</dict>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>iosamap</string>
-    </array>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>weixin</string>
-        <string>wechat</string>
-    </array>
-    <key>NSAppTransportSecurity</key>
-    <dict>
-        <key>NSAllowsArbitraryLoads</key>
-        <true/>
-    </dict>
+	<key>sina.cn</key>
+	<dict>
+		<key>NSIncludesSubdomains</key>
+		<true/>
+		<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+		<false/>
+	</dict>
+	<key>sina.com.cn</key>
+	<dict>
+		<key>NSIncludesSubdomains</key>
+		<true/>
+		<key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
+		<true/>
+		<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+		<false/>
+	</dict>
+	<key>sinaimg.cn</key>
+	<dict>
+		<key>NSIncludesSubdomains</key>
+		<true/>
+		<key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
+		<true/>
+		<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+		<false/>
+	</dict>
+	<key>sinajs.cn</key>
+	<dict>
+		<key>NSIncludesSubdomains</key>
+		<true/>
+		<key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
+		<true/>
+		<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+		<false/>
+	</dict>
+	<key>weibo.cn</key>
+	<dict>
+		<key>NSIncludesSubdomains</key>
+		<true/>
+		<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+		<false/>
+	</dict>
+	<key>weibo.com</key>
+	<dict>
+		<key>NSIncludesSubdomains</key>
+		<true/>
+		<key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
+		<true/>
+		<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+		<false/>
+	</dict>
 </dict>
 </plist>
