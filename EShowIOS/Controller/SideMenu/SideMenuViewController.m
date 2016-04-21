@@ -15,7 +15,9 @@
 #import "LoginViewController.h"
 #import "ForgetTelephoneViewController.h"
 #import "ContentViewController.h"
+#import "PersonalInformationViewController.h"
 
+#import "UIImageView+WebCache.h"
 
 @interface SideMenuViewController () <UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic , strong) UITableView *myTableView;
@@ -72,7 +74,7 @@
     if (section == 0) {
         return 1;
     }else{
-        return 4;
+        return 3;
     }
 }
 
@@ -102,13 +104,36 @@
     
     if (indexPath.section == 0) {
         
-        cell.imageView.image = [UIImage imageNamed:@"ic_default_user"];
-        cell.textLabel.text = @"账号信息";
-        cell.textLabel.textColor = [UIColor whiteColor];
-        cell.textLabel.font = [UIFont systemFontOfSize:22];
+        UIImageView *image = [[UIImageView alloc] init];
+        image.frame = CGRectMake(20, 15, 90, 90);
+        image.layer.masksToBounds = YES;
+        image.layer.cornerRadius = 10;
+        [cell.contentView addSubview:image];
+        
+        UILabel *label = [[UILabel alloc] init];
+        label.frame = CGRectMake(120, 30, 200, 60);
+        label.font = [UIFont systemFontOfSize:22];
+        label.textColor = [UIColor whiteColor];
+        [cell.contentView addSubview:label];
+        
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        NSString *isLogin = [userDefault objectForKey:@"user.username"];
+        
+        if (isLogin == nil) {
+            NSLog(@"%@",isLogin);
+            cell.imageView.image = [UIImage imageNamed:@"ic_default_user"];
+            cell.textLabel.text = @"注册/登录";
+            cell.textLabel.textColor = [UIColor whiteColor];
+            cell.textLabel.font = [UIFont systemFontOfSize:22];
+        }else{
+            [image sd_setImageWithURL:[NSURL URLWithString:[[NSUserDefaults standardUserDefaults] stringForKey:@"user.photo"]]];
+            label.text = [NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"user.username"]];
+        }
+        
     }else{
-        cell.imageView.image = [UIImage imageNamed:@[@"nav_icon_home",@"nav_icon_setting", @"nav_icon_password",@"nav_icon_shutdown"][indexPath.row]];
-        cell.textLabel.text = @[@"我的首页",@"系统设置", @"密码修改", @"退出系统"][indexPath.row];
+        
+        cell.imageView.image = [UIImage imageNamed:@[@"nav_icon_home",@"nav_icon_setting", @"nav_icon_password"][indexPath.row]];
+        cell.textLabel.text = @[@"我的首页",@"系统设置", @"密码修改"][indexPath.row];
         cell.textLabel.textColor = [UIColor whiteColor];
         cell.textLabel.font = [UIFont systemFontOfSize:22];
     }
@@ -123,6 +148,21 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            
+            NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+            NSString *isLogin = [userDefault objectForKey:@"user.username"];
+            
+            if (isLogin == nil) {
+                NSLog(@"%@",isLogin);
+                self.sidePanelController.centerPanel = [[UINavigationController alloc] initWithRootViewController:[[LoginViewController alloc] init]];
+            }else{
+                self.sidePanelController.centerPanel = [[UINavigationController alloc] initWithRootViewController:[[PersonalInformationViewController alloc] init] ];
+            }
+        }
+    }
+    
     if (indexPath.section == 1) {
         
         if (indexPath.row == 0) {
@@ -133,28 +173,11 @@
             
         self.sidePanelController.centerPanel = [[UINavigationController alloc] initWithRootViewController:[[SettingViewController alloc] init]];
             
-        }else if (indexPath.row == 2){
+        }else {
             
             self.sidePanelController.centerPanel = [[UINavigationController alloc] initWithRootViewController:[[ForgetTelephoneViewController alloc] init]];
             
-        }else{
-            
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"退出系统" message:@"是否确定退出登录" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-            [alert show];
         }
-    }
-}
-
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
-
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        [userDefaults removeObjectForKey:@"user.username"];
-        [userDefaults removeObjectForKey:@"user.password"];
-        [userDefaults synchronize];
-        
-        self.sidePanelController.centerPanel = [[UINavigationController alloc] initWithRootViewController:[[LoginViewController alloc] init]];
-
     }
 }
 

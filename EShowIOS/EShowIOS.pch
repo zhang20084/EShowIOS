@@ -24,6 +24,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <ReactiveCocoa/RACEXTScope.h>
 #import "Toast+UIView.h"
+#import <MBProgressHUD.h>
 
 //常用变量
 #define kDevice_Is_iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
@@ -62,8 +63,6 @@
 #define kLinkAttributesActive       @{(NSString *)kCTUnderlineStyleAttributeName : [NSNumber numberWithBool:NO],(NSString *)kCTForegroundColorAttributeName : (__bridge id)[[UIColor colorWithHexString:@"0xFF7256"] CGColor]}
 
 #define BaseUrl @"http://api.eshow.org.cn/"
-
-#define GDKEY @"49e47cbf981bd30f5f2d1aca34e2e80f"
 
 
 #endif /* EShowIOS_pch */

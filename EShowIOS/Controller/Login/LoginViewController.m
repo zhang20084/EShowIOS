@@ -292,6 +292,7 @@
 - (void)cannotLoginBtnClicked:(id)sender {
 
     ForgetTelephoneViewController *forget_vc = [[ForgetTelephoneViewController alloc] init];
+    forget_vc.telephoneStr = self.telephone_text.text;
     [self.navigationController pushViewController:forget_vc animated:YES];
     
 }
@@ -346,7 +347,11 @@
                                   
                               }else if ([dic[@"status"] intValue] == 1){
                               
-                                  [self.view makeToast:dic[@"msg"] duration:2 position:@"center"];
+                                  MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:_myTableView animated:YES];
+                                  hud.mode = MBProgressHUDModeText;
+                                  hud.labelText = @"正在登录中";
+                                  hud.removeFromSuperViewOnHide = YES;
+                                  [hud hide: YES afterDelay: 2];
                                   
                                   NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
                                   [userDefaults setObject:userName forKey:@"user.username"];

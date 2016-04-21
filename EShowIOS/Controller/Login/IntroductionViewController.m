@@ -12,6 +12,7 @@
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
 #import "ContentViewController.h"
+#import "RootTabViewController.h"
 
 @interface IntroductionViewController ()
 @property (nonatomic, strong) UIButton *registerBtn, *loginBtn;
@@ -65,9 +66,8 @@
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(ScreenWidth-70, 55, 50, 30);
     [button setTitle:@"跳过" forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     button.titleLabel.font = [UIFont systemFontOfSize:19.0f];
-    button.backgroundColor = [UIColor colorWithRed:(247/255) green:(247/255) blue:(240/255) alpha:0.2f];
+    button.backgroundColor = [UIColor colorWithWhite:0.2f alpha:0.2f];
     button.layer.masksToBounds = YES;
     button.layer.cornerRadius = 8;
     [button addTarget:self action:@selector(goToContent) forControlEvents:UIControlEventTouchUpInside];
@@ -274,9 +274,8 @@
 
 - (void)goToContent
 {
-    ContentViewController *content_vc = [[ContentViewController alloc] init];
-    UINavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:content_vc];
-    [self presentViewController:nav animated:YES completion:nil];
+    RootTabViewController *content_vc = [[RootTabViewController alloc] init];
+    [self presentViewController:content_vc animated:YES completion:nil];
 }
 
 - (void)registerBtnClicked

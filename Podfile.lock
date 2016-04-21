@@ -22,6 +22,7 @@ PODS:
     - AFNetworking/NSURLSession
   - AMap2DMap (3.3.0)
   - AMapSearch (3.3.0)
+  - BabyBluetooth (0.6.0)
   - CTAssetsPickerController (2.9.5)
   - DTCoreText (1.6.17):
     - DTFoundation/Core (~> 1.7.5)
@@ -79,6 +80,7 @@ DEPENDENCIES:
   - AFNetworking (= 2.6.3)
   - AMap2DMap
   - AMapSearch
+  - BabyBluetooth (~> 0.6.0)
   - CTAssetsPickerController
   - DTCoreText
   - GPUImage
@@ -104,6 +106,7 @@ SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   AMap2DMap: e53461cdc345375e514579db17dbd721ff9ed9eb
   AMapSearch: cff4faf59c007f7d1f2bae2d7170c3912783981a
+  BabyBluetooth: 998483310b5f44724d97c2fd47e82ed1b7e412de
   CTAssetsPickerController: b413fece2194ae3dbf22fbc544cf6f2a6d516a4d
   DTCoreText: 3ea8bba23dd2141ba18adb227a7dd33a822df1c4
   DTFoundation: 70a0765e3596f82dd421832e95c65e2166eb3102

@@ -9,7 +9,7 @@
 #import "ForgetTelephoneViewController.h"
 #import "TPKeyboardAvoidingTableView.h"
 #import "AFNetworking.h"
-#import "LoginViewController.h"
+#import "ForgetPasswordViewController.h"
 
 @interface ForgetTelephoneViewController () <UITableViewDataSource,UITableViewDelegate>
 
@@ -76,13 +76,13 @@
             telephone.frame = CGRectMake(20.0f, 0, ScreenWidth-30.0f, 55.0f);
             telephone.keyboardType = UIKeyboardTypeNumberPad;
             
-            if ([[NSUserDefaults standardUserDefaults] objectForKey:@"user.username"] == nil) {
+            if (self.telephoneStr == nil) {
                
                 telephone.placeholder = @"请输入手机号码";
             
             }else{
              
-                telephone.text = [NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"user.username"]];
+                telephone.text = [NSString stringWithFormat:@"%@",self.telephoneStr];
             
             }
             telephone.clearButtonMode = UITextFieldViewModeAlways;
@@ -147,12 +147,16 @@
                  NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
                  [userDefaults setObject:telephone forKey:@"forget.telephone"];
                  
-                 LoginViewController *login_vc = [[LoginViewController alloc] init];
-                 [self.navigationController pushViewController:login_vc animated:YES];
+                 ForgetPasswordViewController *forgetPassword_vc = [[ForgetPasswordViewController alloc] init];
+                 [self.navigationController pushViewController:forgetPassword_vc animated:YES];
                  
              }else{
                  
-                 [self.view makeToast:dic[@"msg"] duration:2 position:@"center"];
+                 MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                 hud.mode = MBProgressHUDModeText;
+                 hud.labelText = [NSString stringWithFormat:@"%@",dic[@"msg"]];
+                 hud.removeFromSuperViewOnHide = YES;
+                 [hud hide: YES afterDelay: 2];
                  return;
              }
              

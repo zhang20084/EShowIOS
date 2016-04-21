@@ -173,14 +173,14 @@
                  NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
                  [userDefaults setObject:userName forKey:@"remember.telephone"];
                  
-             }else if ([dic[@"status"] intValue] == -5){
-             
-                 [self.view makeToast:dic[@"msg"] duration:2 position:@"center"];
-                 return;
-                 
              }else{
              
-                 [self.view makeToast:dic[@"msg"] duration:2 position:@"center"];
+                 MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                 hud.mode = MBProgressHUDModeText;
+                 hud.labelText = [NSString stringWithFormat:@"%@",dic[@"msg"]];
+                 hud.removeFromSuperViewOnHide = YES;
+                 [hud hide: YES afterDelay: 2];
+
                  return;
              }
 

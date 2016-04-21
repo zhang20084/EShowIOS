@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ForgetTelephoneViewController : UIViewController
-
+@property (nonatomic, strong) NSString *telephoneStr;
 @end

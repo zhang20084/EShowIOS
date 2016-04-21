@@ -7,7 +7,6 @@
 //
 
 #import "SettingTextViewController.h"
-#import "RDVFirstViewController.h"
 #import "AFNetworking.h"
 
 @interface SettingTextViewController () <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>

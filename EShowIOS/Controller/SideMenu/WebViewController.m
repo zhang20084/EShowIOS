@@ -9,7 +9,7 @@
 #import "WebViewController.h"
 #import "NJKWebViewProgressView.h"
 
-@interface WebViewController ()
+@interface WebViewController () <UIWebViewDelegate>
 
 @end
 

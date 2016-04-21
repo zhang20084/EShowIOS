@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'F025FB53DD9CF7B412FFB219'
+               BlueprintIdentifier = '5E6E6B046C13D18CFFB6094B'
                BlueprintName = 'JCSegmentBarController-JCSegmentBarController'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'JCSegmentBarController.bundle'>

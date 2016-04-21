@@ -9,6 +9,7 @@
 #import "SettingViewController.h"
 #import "TitleDisclosureCell.h"
 #import "WebViewController.h"
+#import "LoginViewController.h"
 
 @interface SettingViewController () <UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *myTableView;
@@ -19,6 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = @"系统设置";
+    
     _myTableView = ({
         UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
         tableView.backgroundColor = ColorTableSectionBg;
@@ -37,7 +40,7 @@
 #pragma mark Table
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -48,8 +51,12 @@
             row = 2;
             break;
             
-        default:
+         case 1:
             row = 2;
+            break;
+            
+        default:
+            row = 1;
             break;
     }
     return row;
@@ -63,13 +70,17 @@
         }else{
             [cell setTitleStr:@"常见问题"];
         }
-    }else{
+    }else if (indexPath.section == 1){
     
         if (indexPath.row == 0) {
             [cell setTitleStr:@"关于我们"];
         }else{
             [cell setTitleStr:@"欢迎页"];
         }
+    }else{
+    
+            [cell setTitleStr:@"退出系统"];
+        
     }
     
     [tableView addLineforPlainCell:cell forRowAtIndexPath:indexPath withLeftSpace:kPaddingLeftWidth];
@@ -129,10 +140,33 @@
                     break;
                     
                 default:
-                    
+
                     break;
             }
             break;
+            
+        default:
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"退出系统" message:@"是否确定退出登录" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            [alert show];
+        }
+            break;
+    }
+}
+
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults removeObjectForKey:@"user.username"];
+        [userDefaults removeObjectForKey:@"user.password"];
+        [userDefaults synchronize];
+        
+        LoginViewController *vc = [[LoginViewController alloc] init];
+        UINavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:vc];
+        [self presentViewController:nav animated:YES completion:nil];
+        
     }
 }
 

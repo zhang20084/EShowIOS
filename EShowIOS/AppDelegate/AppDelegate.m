@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "RootTabViewController.h"
 #import "ContentViewController.h"
 #import "SideMenuViewController.h"
 #import "IntroductionViewController.h"
@@ -45,8 +46,7 @@
     [UMSocialWechatHandler setWXAppId:@"wxe0304d6eff6e6307" appSecret:@"7c769ad88fcd6dd6b4a6f7c2a8f5426e" url:@"http://www.umeng.com/social"];
     
     //gaode
-    [MAMapServices sharedServices].apiKey = GDKEY;
-    [AMapSearchServices sharedServices].apiKey = @"49e47cbf981bd30f5f2d1aca34e2e80f";
+    [MAMapServices sharedServices].apiKey = @"f912d3064492b7d1102a9bc6de5b77c1";
     
     //ping++ debug模式
     [Pingpp setDebugMode:YES];
@@ -65,6 +65,9 @@
     }
     
     [self.window makeKeyAndVisible];
+    
+    //设置启动图时间
+    [NSThread sleepForTimeInterval:1.0];
     
     return YES;
 }
@@ -94,14 +97,8 @@
 #pragma mark - Methods Private
 - (void)setupTabViewController{
 
-    self.viewController = [[JASidePanelController alloc] init];
-    self.viewController.shouldDelegateAutorotateToVisiblePanel = NO;
-    
-    self.viewController.leftPanel = [[SideMenuViewController alloc] init];
-    self.viewController.centerPanel = [[UINavigationController alloc] initWithRootViewController:[[ContentViewController alloc] init]];
-    
-    self.window.rootViewController = self.viewController;
-
+    RootTabViewController *root_vc = [[RootTabViewController alloc] init];
+    [self.window setRootViewController:root_vc];
     
 }
 

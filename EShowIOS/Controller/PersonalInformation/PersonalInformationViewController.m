@@ -202,7 +202,10 @@
     
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            
+           
+            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"更换头像" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照", @"从相册选择", nil];
+            [actionSheet showInView:self.view];
+
         }else if (indexPath.row == 2){
             SettingTextViewController *vc = [[SettingTextViewController alloc] init];
             vc.setData = [[NSUserDefaults standardUserDefaults] objectForKey:@"user.realname"];
@@ -275,4 +278,26 @@
     }
 }
 
+#pragma mark UIActionSheetDelegate M
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 2) {
+        return;
+    }
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;//设置可编辑
+    
+    if (buttonIndex == 0) {
+        //  拍照
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }else if (buttonIndex == 1){
+        UIImagePickerController *photoPicker = [[UIImagePickerController alloc] init];
+        photoPicker.delegate = self;
+        photoPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        photoPicker.view.backgroundColor = [UIColor whiteColor];
+        [self presentViewController:photoPicker animated:YES completion:NULL];
+    }
+    [self presentViewController:picker animated:YES completion:nil];//进入照相界面
+    
+}
 @end

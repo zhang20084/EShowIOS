@@ -142,7 +142,9 @@
     headerV.backgroundColor = [UIColor clearColor];
     
     UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, headerV.frame.origin.y, ScreenWidth, 0.06*ScreenHeight)];
-    textLabel.text = @"已将验证码发送到手机号码";
+    NSString *telephoneStr = [[NSUserDefaults standardUserDefaults] objectForKey:@"remember.telephone"];
+    NSString *tel = [telephoneStr stringByReplacingCharactersInRange:NSMakeRange(3, 5) withString:@"*****"];
+    textLabel.text = [NSString stringWithFormat:@"已将短信发送至您的手机%@",tel];
     textLabel.textColor = [UIColor grayColor];
     textLabel.font = [UIFont systemFontOfSize:14.0];
     [headerV addSubview:textLabel];
@@ -243,16 +245,28 @@
                  return;
              }else if ([dic[@"status"] intValue] == 0)
              {
-                 [self.view makeToast:dic[@"msg"] duration:2 position:@"center"];
+                 MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                 hud.mode = MBProgressHUDModeText;
+                 hud.labelText = [NSString stringWithFormat:@"%@",dic[@"msg"]];
+                 hud.removeFromSuperViewOnHide = YES;
+                 [hud hide: YES afterDelay: 2];
                  return;
                  
              }else if ([dic[@"status"]intValue] == 1){
              
-                 [self.view makeToast:dic[@"msg"] duration:2 position:@"center"];
+                 MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                 hud.mode = MBProgressHUDModeText;
+                 hud.labelText = [NSString stringWithFormat:@"%@",dic[@"msg"]];
+                 hud.removeFromSuperViewOnHide = YES;
+                 [hud hide: YES afterDelay: 2];
                  
              }else{
              
-                 [self.view makeToast:dic[@"msg"] duration:2 position:@"center"];
+                 MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                 hud.mode = MBProgressHUDModeText;
+                 hud.labelText = [NSString stringWithFormat:@"%@",dic[@"msg"]];
+                 hud.removeFromSuperViewOnHide = YES;
+                 [hud hide: YES afterDelay: 2];
                  return;
              }
              

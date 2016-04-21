@@ -9,6 +9,7 @@
 #import "SigleLocationViewController.h"
 #import "TPKeyboardAVoidingTableView.h"
 #import "MapViewController.h"
+#import "AllMapViewController.h"
 
 @interface SigleLocationViewController () <UITableViewDataSource,UITableViewDelegate>
 

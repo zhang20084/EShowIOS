@@ -8,20 +8,21 @@
 
 #import "ContentViewController.h"
 #import "PopMenu.h"
+#import "FRDLivelyButton.h"
 
 #import "SigleLocationViewController.h"//地图
 #import "PingPayWebViewController.h"//支付
 #import "ShareViewController.h"//分享
 #import "QRCScannerViewController.h"//扫一扫
 #import "AddressPickerViewController.h"//城市选择
-#import "BaseRDVTabViewController.h"//个人信息页面
-#import "PersonalInformationViewController.h"
+#import "PersonalInformationViewController.h"//个人信息页面
 
 @interface ContentViewController () <UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) UIImageView *imageLogo;
 @property (nonatomic, strong) UISearchBar *mySearchBar;
 @property (nonatomic, strong) PopMenu *myPopMenu;
+@property (nonatomic, strong) FRDLivelyButton *rightNavBtn;
 @end
 
 @implementation ContentViewController
@@ -47,16 +48,60 @@
     _myTableView.delegate = self;
     [self.view addSubview:_myTableView];
     
+    //初始化弹出菜单
+    NSArray *menuItems = @[
+                           [MenuItem itemWithTitle:@"扫一扫" iconName:@"ic_saoma" index:0],
+                           [MenuItem itemWithTitle:@"系统信息" iconName:@"ic_system" index:1],
+                           [MenuItem itemWithTitle:@"透传信息" iconName:@"ic_touchuan" index:2],
+                           ];
+    if (!_myPopMenu) {
+        _myPopMenu = [[PopMenu alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight-64) items:menuItems];
+        _myPopMenu.perRowItemCount = 3;
+        _myPopMenu.menuAnimationType = kPopMenuAnimationTypeSina;
+    }
+    __weak typeof(self) weakSelf = self;
+    @weakify(self);
+    _myPopMenu.didSelectedItemCompletion = ^(MenuItem *selectedItem){
+        [weakSelf.myPopMenu.realTimeBlurFooter disMiss];
+        @strongify(self);
+        //改下显示style
+        [self.rightNavBtn setStyle:kFRDLivelyButtonStylePlus animated:YES];
+        if (!selectedItem) return;
+        switch (selectedItem.index) {
+            case 0:
+                [self goToNewAVFoundationVC];
+                break;
+            case 1:
+                //                [self goToNewTaskVC];
+                break;
+            case 2:
+                //                [self goToNewTweetVC];
+                break;
+            default:
+                NSLog(@"%@",selectedItem.title);
+                break;
+        }
+    };
+    
     [self setupNavBtn];
 }
 
 - (void) setupNavBtn
 {
-    UIBarButtonItem *plus_btn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"addBtn_Nav"] style:UIBarButtonItemStylePlain target:self action:@selector(addItemClicked:)];
-    UIBarButtonItem *search_btn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"search_Nav"] style:UIBarButtonItemStylePlain target:self action:@selector(searchItemClicked:)];
-    
-    NSArray *buttonArray = [[NSArray alloc] initWithObjects:plus_btn, search_btn, nil];
-    self.navigationItem.rightBarButtonItems = buttonArray;
+    //变化按钮
+    _rightNavBtn = [[FRDLivelyButton alloc] initWithFrame:CGRectMake(0,0,18.5,18.5)];
+    [_rightNavBtn setOptions:@{ kFRDLivelyButtonLineWidth: @(1.0f),
+                                kFRDLivelyButtonColor: [UIColor colorWithRed:(247 / 255.0f) green:(105 / 255.0f) blue:(86 / 255.0f) alpha:1]
+                                }];
+    [_rightNavBtn setStyle:kFRDLivelyButtonStylePlus animated:NO];
+    [_rightNavBtn addTarget:self action:@selector(addItemClicked:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithCustomView:_rightNavBtn];
+    self.navigationItem.rightBarButtonItem = buttonItem;
+
+//    UIBarButtonItem *search_btn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"search_Nav"] style:UIBarButtonItemStylePlain target:self action:@selector(searchItemClicked:)];
+//    
+//    NSArray *buttonArray = [[NSArray alloc] initWithObjects:_, search_btn, nil];
+//    self.navigationItem.rightBarButtonItems = buttonArray;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -67,32 +112,13 @@
 #pragma make VC
 - (void)addItemClicked:(id)sender
 {
-    NSArray *menuItems = @[[MenuItem itemWithTitle:@"扫一扫" iconName:@"saoyisao" index:0],
-                           [MenuItem itemWithTitle:@"系统信息" iconName:@"xitongmessage" index:1],
-                           [MenuItem itemWithTitle:@"透传信息" iconName:@"touchuanmessage" index:2],
-                           ];
-    
-    if (!_myPopMenu){
-        _myPopMenu = [[PopMenu alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64) items:menuItems];
-        _myPopMenu.perRowItemCount = 1;
-        _myPopMenu.menuAnimationType = kPopMenuAnimationTypeSina;
+    if (_rightNavBtn.buttonStyle == kFRDLivelyButtonStylePlus) {
+        [_rightNavBtn setStyle:kFRDLivelyButtonStyleClose animated:YES];
+        [_myPopMenu showMenuAtView:kKeyWindow startPoint:CGPointMake(0, -100) endPoint:CGPointMake(0, -100)];
+    } else{
+        [_myPopMenu dismissMenu];
     }
-    
-    @weakify(self);//@weakify 将当前对象声明为weak.. 这样block内部引用当前对象,就不会造成引用计数+1可以破解循环引用
-    _myPopMenu.didSelectedItemCompletion = ^(MenuItem *selectedItem){
-        
-        
-        @strongify(self);//@strongify 相当于声明一个局部的strong对象,等于当前对象.可以保证block调用的时候,内部的对象不会释放
-        switch (selectedItem.index) {
-            case 0:
-                [self goToNewAVFoundationVC];
-                break;
-                
-            default:
-                break;
-        }
-    };
-    [_myPopMenu showMenuAtView:kKeyWindow startPoint:CGPointMake(0, -100) endPoint:CGPointMake(0, -100)];
+
 }
 
 - (void)goToNewAVFoundationVC
@@ -167,7 +193,7 @@
     [cell setSelectedBackgroundView:selectedBackground];
     
     cell.imageView.image = [UIImage imageNamed:@[@"information", @"picture", @"dowenload", @"city", @"music",@"map",@"payment",@"share",@"chart"][indexPath.row]];
-    cell.textLabel.text = @[@"信息表单", @"图片列表", @"文件下载", @"城市选择", @"音乐播放", @"地图",@"支付",@"分享",@"聊天"][indexPath.row];
+    cell.textLabel.text = @[@"信息表单", @"图片列表", @"文件下载", @"城市选择", @"音乐播放", @"地图",@"支付",@"分享",@"聊天",@"蓝牙"][indexPath.row];
     
     cell.textLabel.font = [UIFont systemFontOfSize:16];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -228,6 +254,10 @@
     
         ShareViewController *share_vc = [[ShareViewController alloc] init];
         [self.navigationController pushViewController:share_vc animated:YES];
+        
+    }else if (indexPath.row == 9){
+    
+        
         
     }
 }
