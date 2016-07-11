@@ -28,6 +28,12 @@ EShowIOS 是EShow开源框架中的iOS框架
 ####再说下项目的启动流程：
 在AppDelegate的启动方法中，先设置了一下Appearance的样式，然后根据用户的登录状态选择是去加载登录页面LoginViewController，还是登录后的RootTabViewController页面。
 
+####介绍一下项目中有哪些功能点
+EShowIOS包含了大部分app都会使用到的一个信息表单功能(包含头像上传,信息修改),图片列表,文件下载,城市选择,音乐播放,地图,支付,分享,即时通讯,透传消息,扫一扫.
+
+####介绍一下项目中使用到的一些sdk
+在登陆时使用的是友盟的第三方登陆.地图集成了高德地图,在里面调用的是直接搜索周边信息的方法,同样也可以使用高德的web显示来实现功能的开发.支付集成了ping++.
+
 ####最后说下[CocoaPods](http://cocoapods.org/)里面用到的第三方类库
  - [SDWebImage](https://github.com/rs/SDWebImage)：图片加载
  - [TTTAttributedLabel](https://github.com/TTTAttributedLabel/TTTAttributedLabel)：富文本的label，可点击链接
